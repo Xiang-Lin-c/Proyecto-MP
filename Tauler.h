@@ -16,9 +16,9 @@ public:
     void actualitzaMovimentsValids();
     void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]);
     bool mouFitxa(Posicio origen, Posicio desti);
-    void toString(char posicio[]);
-    void llegeixTauler(char nomFitxer[], char tauler[N_FILES][N_COLUMNES]);
-    void escriuTauler(char nomFitxer[], char tauler[N_FILES][N_COLUMNES]);
+    void llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
+    void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
+
 private:
     Fitxa m_tauler[N_FILES][N_COLUMNES];
     void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);

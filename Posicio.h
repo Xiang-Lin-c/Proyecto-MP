@@ -6,9 +6,6 @@ using namespace std;
 class Posicio
 {
 
-private:
-    int m_fila;
-    int m_columna;
 public:
 
     Posicio() : m_fila(0), m_columna(0) {}
@@ -18,7 +15,17 @@ public:
     int getColumna() const { return m_columna; }
     void setFila(int fila) { m_fila = fila; }
     void setColumna(int columna) { m_columna = columna; }
-
-
+    string toString() const;
+    void fromString(const string& pos);
     bool operator==(const Posicio& posicio) const;
+    void llegeixFitxa(const string& nomFitxer, char& tipusFitxa, Posicio& posicio);
+    void escriuFitxa(const string& nomFitxer, char tipusFitxa, const Posicio& posicio);
+    ifstream& operator>>(ifstream& fitxer, Posicio& posicio);
+    ofstream& operator<<(ofstream& fitxer, const Posicio& posicio);
+private:
+    int m_fila;
+    int m_columna;
+
+
+
 };
