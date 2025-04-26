@@ -28,4 +28,3 @@ private:
     void processaMovimentCaptura(Posicio origen, Posicio desti);
 
 };
-#endif
