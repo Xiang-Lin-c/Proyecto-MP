@@ -7,13 +7,15 @@
 #include <string>
 const int MAX_MOVIMENTS = 20;
 
-typedef enum TipusFitxa {
+typedef enum TipusFitxa 
+{
     TIPUS_NORMAL,
     TIPUS_DAMA,
     TIPUS_EMPTY
 };
 
-typedef enum ColorFitxa {
+typedef enum ColorFitxa 
+{
     COLOR_NEGRE,
     COLOR_BLANC,
     COLOR_EMPTY

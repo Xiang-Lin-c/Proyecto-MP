@@ -1,18 +1,18 @@
 #include "Fitxa.h"
 
 TipusFitxa Fitxa::getTipus() const {
-    return tipus;
+    return m_tipus;
 }
 
 ColorFitxa Fitxa::getColor() const {
-    return color;
+    return m_color;
 }
 
 Posicio Fitxa::getPosicio() const {
-    return posicio;
+    return m_posicio;
 }
 
 bool Fitxa::esBuida() const {
-    return tipus == TIPUS_EMPTY;
+    return m_tipus == TIPUS_EMPTY;
 }
 
