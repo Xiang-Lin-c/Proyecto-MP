@@ -16,3 +16,4 @@ bool Fitxa::esBuida() const {
     return m_tipus == TIPUS_EMPTY;
 }
 
+//Me toca a mi hacerlo
