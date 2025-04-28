@@ -3,6 +3,7 @@
 
 #include "Posicio.h"
 #include "Moviment.h"
+#include "Tauler.h" 
 #include <iostream>
 #include <string>
 using namespace std;
@@ -47,7 +48,7 @@ public:
     Moviment getMovimentValid(int index) const;       // Obtiene un movimiento válido por índice
 
     // Métodos adicionales
-    void convertirADama();                            // Convierte la ficha en dama
+    void convertirDama();                            // Convierte la ficha en dama
     bool esBuida() const;                             // Verifica si la ficha está vacía
     bool esDama() const;                              // Verifica si la ficha es una dama
 
