@@ -25,7 +25,6 @@ typedef enum ColorFitxa
 class Fitxa
 {
 public:
-    // Constructores
     Fitxa();
     Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
 
