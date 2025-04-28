@@ -15,7 +15,7 @@ class Tauler {
 public:
     void inicialitza(const string& nomFitxer);
     void actualitzaMovimentsValids();
-    void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]);
+    void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[])const;
     bool mouFitxa(Posicio origen, Posicio desti);
     string toString() const;
     void llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
@@ -24,9 +24,10 @@ public:
 private:
     Fitxa m_tauler[N_FILES][N_COLUMNES];
 	void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
-    bool esMovimentValid(Posicio origen, Posicio desti);
+    bool esMovimentValid(Posicio origen, Posicio desti)const;
     void actualitzaMovimentsFitxa(Fitxa fitxa);
     void processaMovimentSimple(Posicio origen, Posicio desti);
     void processaMovimentCaptura(Posicio origen, Posicio desti);
 
 };
+#endif
