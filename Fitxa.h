@@ -1,8 +1,8 @@
 #ifndef FITXA_H
 #define FITXA_H
 
-#include "posicio.h"
-#include "moviment.h"
+#include "Posicio.h"
+#include "Moviment.h"
 #include <iostream>
 #include <string>
 const int MAX_MOVIMENTS = 20;
@@ -16,7 +16,6 @@ typedef enum TipusFitxa {
 typedef enum ColorFitxa {
     COLOR_NEGRE,
     COLOR_BLANC,
-    COLOR_EMPTY
 };
 
 class Fitxa {
