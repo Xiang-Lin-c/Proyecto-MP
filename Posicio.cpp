@@ -11,13 +11,6 @@ bool Posicio::operator==(const Posicio& posicio) const
 	return iguals;
 }
 
-string Posicio::toString() const {
-	string posicio = "a1";
-	posicio[0] = 'a' + m_columna;
-	posicio[1] = '1' + (N_FILES - m_fila - 1);
-	return posicio;
-
-}
 
 void Posicio::fromString(const string& pos) {
 	m_fila = (N_FILES - 1) - (pos[1] - '1');
