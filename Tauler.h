@@ -3,7 +3,7 @@
 #include "Fitxa.h"
 #include "Posicio.h"
 #include "Moviment.h"
-#include <string.h>
+#include <string>
 #include <iostream>
 
 const int N_FILES = 8;
@@ -13,6 +13,7 @@ const int MAX_POSICIONS = 20;
 class Tauler {
 
 public:
+    Tauler();
     void inicialitza(const string& nomFitxer);
     void actualitzaMovimentsValids();
     void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]);

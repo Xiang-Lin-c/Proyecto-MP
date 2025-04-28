@@ -21,7 +21,7 @@ typedef enum ColorFitxa {
 class Fitxa {
 
 public:
-    Fitxa();
+    Fitxa() : m_tipus(TIPUS_EMPTY){};
     Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
     TipusFitxa getTipus() const;
     ColorFitxa getColor() const;

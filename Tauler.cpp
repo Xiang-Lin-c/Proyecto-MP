@@ -1,14 +1,6 @@
 #include "Tauler.h"
 
-void Tauler::inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) {
-	int fila = pos.getFila();
-	int col = pos.getColumna();
 
-	if (fila >= 0 && fila < N_FILES && col >= 0 && col < N_COLUMNES) {
-		tauler[fila][col] = Fitxa(tipus, color, pos);
-
-	}
-}
 void Tauler::inicialitza(const string& nomFitxer) {
 	ifstream fitxer(nomFitxer);
 	if (fitxer.is_open()) {
@@ -46,12 +38,42 @@ bool Tauler::esPosicioValida(const Posicio& pos) const {
 	return pos.getFila() >= 0 && pos.getFila() < N_FILES &&
 		pos.getColumna() >= 0 && pos.getColumna() < N_COLUMNES;
 }
-string Tauler::toString() const {
-	string posicio = "a1";
-	posicio[0] = 'a' + m_columna;
-	posicio[1] = '1' + (N_FILES - m_fila - 1);
-	return posicio;
 
+void Tauler::getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]) {
+	Fitxa fitxa;
+	int fila, columna;
+	fila = origen.getFila();
+	columna = origen.getColumna();
+	fitxa = m_tauler[fila][columna];
+
+
+}
+string Tauler::toString() const {
+	ofstream fitxa;
+	TipusFitxa tipus;
+	ColorFitxa color;
+
+	for (int i = N_FILES - 1; i >= 0; i--) {
+		for (int j = 0; j < N_COLUMNES; j++) {
+			tipus = m_tauler[i][j].getTipus();
+			color = m_tauler[i][j].getColor();
+			if (tipus == TIPUS_EMPTY)
+				fitxa << "_";
+			else if (tipus == TIPUS_NORMAL) {
+				if (color == COLOR_BLANC)
+					fitxa << "O";
+				else
+					fitxa << "X";
+			}
+			else {
+				if (color == "COLOR_BLAC")
+					fitxa << "D";
+				else
+					fitxa << "R";
+			}
+		}
+		fitxa << endl;
+	}
 }
 
 void Tauler::llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]) {
@@ -91,5 +113,16 @@ void Tauler::escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMN
 		fitxer.close();
 	}
 
+}
+
+
+void Tauler::inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) {
+	int fila = pos.getFila();
+	int col = pos.getColumna();
+
+	if (fila >= 0 && fila < N_FILES && col >= 0 && col < N_COLUMNES) {
+		tauler[fila][col] = Fitxa(tipus, color, pos);
+
+	}
 }
 
