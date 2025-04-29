@@ -43,7 +43,7 @@ public:
 
     // Métodos adicionales
     Moviment auxMoviment() const;                   // Duplica el movimiento actual
-    void imprimirMoviment() const;                  // Imprime la información del movimiento
+    
 
     // Operadores
     bool operator==(const Moviment& altre) const;   // Compara dos movimientos
