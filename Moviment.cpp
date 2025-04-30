@@ -22,7 +22,7 @@ void Moviment::afegirPosicio(const Posicio& pos)
 
 // Elimina la última posición del movimiento
 void Moviment::eliminarUltimaPosicio() 
-{
+{ 
     if (nPassos > 0) {
         nPassos=nPassos-1;
     }

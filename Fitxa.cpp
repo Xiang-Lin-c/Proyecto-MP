@@ -43,11 +43,11 @@ void Fitxa::netejaMovimentsValids()
     m_numMoviments = 0; 
 }
 
-void Fitxa::afegeixMovimentValid(const Moviment& moviment) 
+void Fitxa::afegeixMovimentValid(const Posicio& pos) 
 {
     if (m_numMoviments < MAX_MOVIMENTS) 
     {
-        m_movimentsValids[m_numMoviments] = moviment;
+        m_movimentsValids[m_numMoviments].afegirPosicio(pos);
         m_numMoviments++;
     }
 }

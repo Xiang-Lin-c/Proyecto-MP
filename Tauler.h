@@ -25,8 +25,7 @@ private:
     Fitxa m_tauler[N_FILES][N_COLUMNES];
 	void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
     bool esPosicioValida(const Posicio& pos) const;
-    void actualitzaMovimentsFitxa(Fitxa fitxa);
-    void processaMovimentSimple(Posicio origen, Posicio desti);
+    void actualitzaMovimentsFitxa(Fitxa& fitxa);
     void processaMovimentCaptura(Posicio origen, Posicio desti);
 
 };

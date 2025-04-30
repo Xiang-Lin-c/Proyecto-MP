@@ -23,7 +23,6 @@ public:
     // Constructores
     Moviment();
     Moviment(const Posicio& inici, TipusFitxa tipus);
-
     // Métodos para gestionar el movimiento
     void afegirPosicio(const Posicio& pos);          // Añade una posición al movimiento
     void eliminarUltimaPosicio();                   // Elimina la última posición del movimiento
@@ -32,7 +31,8 @@ public:
 
     // Métodos para obtener información del movimiento
     Posicio inici() const;                          // Devuelve la posición inicial del movimiento
-    Posicio fi() const;                             // Devuelve la posición final del movimiento
+    Posicio fi() const;       
+    // Devuelve la posición final del movimiento
     int getNumPassos() const;                       // Devuelve el número de pasos en el movimiento
     int getNumCaptures() const;                     // Devuelve el número de fichas capturadas
     bool esCaptura() const;                         // Indica si el movimiento es una captura
