@@ -16,12 +16,12 @@ private:
     int nPassos;                        // Número de posiciones en el movimiento
     Posicio fitxesCapturades[MAX_CAPTURES]; // Posiciones de las fichas capturadas
     int nCaptures;                      // Número de fichas capturadas
-    bool captura;                       // Indica si el movimiento implica capturas
+    bool m_captura;                       // Indica si el movimiento implica capturas
     TipusFitxa tipusFitxa;              // Tipo de ficha asociada al movimiento (normal o dama)
 
 public:
     
-    Moviment();
+	Moviment() : nPassos(0), nCaptures(0), captura(false), tipusFitxa(TIPUS_EMPTY) {};
     Moviment(const Posicio& inici, TipusFitxa tipus);
 
     
@@ -37,7 +37,7 @@ public:
     int getNumPassos() const;                       // Devuelve el número de pasos en el movimiento
     int getNumCaptures() const;                     // Devuelve el número de fichas capturadas
     bool esCaptura() const;                         // Indica si el movimiento es una captura
-
+	Posicio getPosicio(int index) const;             // Devuelve una posición específica del movimiento
     
     bool esValid(const Tauler& tauler) const;       // Comprueba si el movimiento es válido
     bool posicioValida(const Posicio& pos, const Tauler& tauler) const; // Comprueba si una posición es válida

@@ -15,7 +15,7 @@ class Tauler {
 public:
     void inicialitza(const string& nomFitxer);
     void actualitzaMovimentsValids();
-    void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[])const;
+    void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]);
     bool mouFitxa(Posicio origen, Posicio desti);
     string toString() const;
     void llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);

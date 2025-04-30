@@ -92,7 +92,13 @@ bool Fitxa::esBuida() const
 bool Fitxa::esDama() const {
     return m_tipus == TIPUS_DAMA;
 }
-
+void Fitxa::afegirCaptura(const Posicio& pos)
+{
+	if (m_numMoviments < MAX_MOVIMENTS)
+	{
+		m_movimentsValids[m_numMoviments].afegirFitxaCapturada(pos);
+	}
+}
 //depenede del tipo de ficha
 void Fitxa::generarMovimentsValids(const Tauler& tauler) 
 {

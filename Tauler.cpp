@@ -41,18 +41,16 @@ void Tauler::processaMovimentCaptura(Fitxa fitxa) {
 			if (esPosicioValida(Posicio(fila + 1, columna - 1)) && m_tauler[fila + 1][columna - 1].getColor() != fitxa.getColor()) {
 				if (esPosicioValida(Posicio(fila + 2, columna - 2)) && m_tauler[fila + 2][columna - 2].esBuida()) {
 					pos = Posicio(fila + 2, columna - 2);
-					Moviment mov;
-					mov.afegirPosicio(pos);
 					fitxa.ModificaUltimMoviment(pos);
+					fitxa.afegirCaptura(Posicio(fila + 1, columna - 1));
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
 			if (esPosicioValida(Posicio(fila + 1, columna + 1)) && m_tauler[fila + 1][columna + 1].getColor() != fitxa.getColor()) {
 				if (esPosicioValida(Posicio(fila + 2, columna + 2)) && m_tauler[fila + 2][columna + 2].esBuida()) {
 					pos = Posicio(fila + 2, columna + 2);
-					Moviment mov;
-					mov.afegirPosicio(pos);
-					fitxa.ModificaUltimMoviment(pos);					
+					fitxa.ModificaUltimMoviment(pos);		
+					fitxa.afegirCaptura(Posicio(fila + 1, columna + 1));
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
@@ -61,18 +59,16 @@ void Tauler::processaMovimentCaptura(Fitxa fitxa) {
 			if (esPosicioValida(Posicio(fila - 1, columna - 1)) && m_tauler[fila - 1][columna - 1].getColor() != fitxa.getColor()) {
 				if (esPosicioValida(Posicio(fila - 2, columna - 2)) && m_tauler[fila - 2][columna - 2].esBuida()) {
 					pos = Posicio(fila - 2, columna - 2);
-					Moviment mov;
-					mov.afegirPosicio(pos);
 					fitxa.ModificaUltimMoviment(pos);	
+					fitxa.afegirCaptura(Posicio(fila - 1, columna - 1));
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
 			if (esPosicioValida(Posicio(fila - 1, columna + 1)) && m_tauler[fila - 1][columna + 1].getColor() != fitxa.getColor()) {
 				if (esPosicioValida(Posicio(fila - 2, columna + 2)) && m_tauler[fila - 2][columna + 2].esBuida()) {
 					pos = Posicio(fila - 2, columna + 2);
-					Moviment mov;
-					mov.afegirPosicio(pos);
 					fitxa.ModificaUltimMoviment(pos);	
+					fitxa.afegirCaptura(Posicio(fila - 1, columna + 1));
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
@@ -82,9 +78,8 @@ void Tauler::processaMovimentCaptura(Fitxa fitxa) {
 		if (esPosicioValida(Posicio(fila + 1, columna - 1)) && m_tauler[fila + 1][columna - 1].getColor() != fitxa.getColor()) {
 			if (esPosicioValida(Posicio(fila + 2, columna - 2)) && m_tauler[fila + 2][columna - 2].esBuida()) {
 				pos = Posicio(fila + 2, columna - 2);
-				Moviment mov;
-				mov.afegirPosicio(pos);
 				fitxa.ModificaUltimMoviment(pos);	
+				fitxa.afegirCaptura(Posicio(fila + 1, columna - 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -92,9 +87,8 @@ void Tauler::processaMovimentCaptura(Fitxa fitxa) {
 		if (esPosicioValida(Posicio(fila + 1, columna + 1)) && m_tauler[fila + 1][columna + 1].getColor() != fitxa.getColor()) {
 			if (esPosicioValida(Posicio(fila + 2, columna + 2)) && m_tauler[fila + 2][columna + 2].esBuida()) {
 				pos = Posicio(fila + 2, columna + 2);
-				Moviment mov;
-				mov.afegirPosicio(pos);
 				fitxa.ModificaUltimMoviment(pos);	
+				fitxa.afegirCaptura(Posicio(fila + 1, columna + 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -102,9 +96,8 @@ void Tauler::processaMovimentCaptura(Fitxa fitxa) {
 		if (esPosicioValida(Posicio(fila - 1, columna - 1)) && m_tauler[fila - 1][columna - 1].getColor() != fitxa.getColor()) {
 			if (esPosicioValida(Posicio(fila - 2, columna - 2)) && m_tauler[fila - 2][columna - 2].esBuida()) {
 				pos = Posicio(fila - 2, columna - 2);
-				Moviment mov;
-				mov.afegirPosicio(pos);
 				fitxa.ModificaUltimMoviment(pos);	
+				fitxa.afegirCaptura(Posicio(fila - 1, columna - 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -112,9 +105,8 @@ void Tauler::processaMovimentCaptura(Fitxa fitxa) {
 		if (esPosicioValida(Posicio(fila - 1, columna + 1)) && m_tauler[fila - 1][columna + 1].getColor() != fitxa.getColor()) {
 			if (esPosicioValida(Posicio(fila - 2, columna + 2)) && m_tauler[fila - 2][columna + 2].esBuida()) {
 				pos = Posicio(fila - 2, columna + 2);
-				Moviment mov;
-				mov.afegirPosicio(pos);
 				fitxa.ModificaUltimMoviment(pos);	
+				fitxa.afegirCaptura(Posicio(fila - 1, columna + 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -140,6 +132,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 					Moviment mov;
 					mov.afegirPosicio(pos);
 					fitxa.afegeixMovimentValid(mov);
+					fitxa.afegirCaptura(Posicio(fila + 1, columna - 1));
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
@@ -155,6 +148,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 					Moviment mov;
 					mov.afegirPosicio(pos);
 					fitxa.afegeixMovimentValid(mov);
+					fitxa.afegirCaptura(Posicio(fila + 1, columna + 1));	
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
@@ -172,6 +166,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 					Moviment mov;
 					mov.afegirPosicio(pos);
 					fitxa.afegeixMovimentValid(mov);
+					fitxa.afegirCaptura(Posicio(fila - 1, columna - 1));
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
@@ -187,6 +182,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 					Moviment mov;
 					mov.afegirPosicio(pos);
 					fitxa.afegeixMovimentValid(mov);
+					fitxa.afegirCaptura(Posicio(fila - 1, columna + 1));
 					processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 				}
 			}
@@ -205,6 +201,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 				Moviment mov;
 				mov.afegirPosicio(pos);
 				fitxa.afegeixMovimentValid(mov);
+				fitxa.afegirCaptura(Posicio(fila + 1, columna - 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -221,6 +218,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 				Moviment mov;
 				mov.afegirPosicio(pos);
 				fitxa.afegeixMovimentValid(mov);
+				fitxa.afegirCaptura(Posicio(fila + 1, columna + 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -237,6 +235,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 				Moviment mov;
 				mov.afegirPosicio(pos);
 				fitxa.afegeixMovimentValid(mov);
+				fitxa.afegirCaptura(Posicio(fila - 1, columna - 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -253,6 +252,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 				Moviment mov;
 				mov.afegirPosicio(pos);
 				fitxa.afegeixMovimentValid(mov);
+				fitxa.afegirCaptura(Posicio(fila - 1, columna + 1));
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos));
 			}
 		}
@@ -270,7 +270,36 @@ void Tauler::actualitzaMovimentsValids() {
     }
 }
 
-void Tauler::getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[])const {
+void Tauler::getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]) {
+	actualitzaMovimentsValids();
+	int fila = origen.getFila();
+	int columna = origen.getColumna();
+	Fitxa fitxa = m_tauler[fila][columna];
+	int nMoviments = fitxa.getNumMoviments();
+	int nPassos;
+	Posicio pos;
+	bool trobat = false;
+	nPosicions = 0;
+	for (int i = 0; i < nMoviments; i++) {
+		nPassos = fitxa.getMovimentValid(i).getNumPassos();
+		for (int j = 0; j < nPassos; j++) {
+			trobat = false;
+			pos = fitxa.getMovimentValid(i).getPosicio(j);
+			for (int z = 0; z < nPosicions; z++) {
+				if (pos == posicionsPossibles[z]) {
+					trobat = true;
+					break;
+				}
+			}
+			if (trobat == false) {
+				posicionsPossibles[nPosicions] = pos;
+				nPosicions++;
+			}
+		}
+	}
+}
+
+bool Tauler::mouFitxa(Posicio origen, Posicio desti) {
 
 }
 

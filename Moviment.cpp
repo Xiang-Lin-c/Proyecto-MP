@@ -33,7 +33,7 @@ void Moviment::netejar()
 {
     nPassos = 0;
     nCaptures = 0;
-    captura = false;
+    m_captura = false;
 }
 
 // Añade una ficha capturada al movimiento
@@ -43,7 +43,7 @@ void Moviment::afegirFitxaCapturada(const Posicio& pos)
     {
         fitxesCapturades[nCaptures] = pos;
         nCaptures++;
-        captura = true; // Indica que el movimiento implica capturas
+        m_captura = true; // Indica que el movimiento implica capturas
     }
 }
 
@@ -65,7 +65,14 @@ Posicio Moviment::fi() const
     }
     return Posicio(); // Devuelve una posición vacía si no hay pasos
 }
-
+Posicio Moviment::getPosicio(int index) const
+{
+	if (index >= 0 && index < nPassos)
+	{
+		return trajecte[index];
+	}
+	return Posicio(); // Devuelve una posición vacía si el índice no es válido
+}
 // Devuelve el número de pasos en el movimiento
 int Moviment::getNumPassos() const 
 {
@@ -81,7 +88,7 @@ int Moviment::getNumCaptures() const
 // Indica si el movimiento es una captura
 bool Moviment::esCaptura() const 
 {
-    return captura;
+    return m_captura;
 }
 
 // Comprueba si el movimiento es válido
@@ -114,7 +121,7 @@ Moviment Moviment::auxMoviment() const
     Moviment aux;
     aux.nPassos = nPassos;
     aux.nCaptures = nCaptures;
-    aux.captura = captura;
+    aux.m_captura = m_captura;
     for (int i = 0; i < nPassos; i++) 
     {
         aux.trajecte[i] = trajecte[i];
@@ -165,7 +172,7 @@ bool Moviment::operator==(const Moviment& mov) const //lo usaremos para evitar a
     }
 
     // Compara si ambos movimientos son de captura
-    if (captura != mov.captura) 
+    if (m_captura != mov.m_captura) 
     {
         return false;
     }

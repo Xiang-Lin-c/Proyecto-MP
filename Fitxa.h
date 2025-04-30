@@ -44,7 +44,8 @@ public:
     void netejaMovimentsValids();                     // Limpia los movimientos válidos
     void afegeixMovimentValid(const Moviment& moviment); // Añade un movimiento válido
 	void ModificaUltimMoviment(const Posicio& posicio); // Modifica el último movimiento válido
-    int getNumMoviments() const;                      // Devuelve el número de movimientos válidos
+    int getNumMoviments() const;// Devuelve el número de movimientos válidos
+	void afegirCaptura(const Posicio& pos); // Añade una captura a la ficha
     Moviment getMovimentValid(int index) const;       // Obtiene un movimiento válido por índice
 
     // Métodos adicionales
