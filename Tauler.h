@@ -26,7 +26,7 @@ private:
 	void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
     bool esPosicioValida(const Posicio& pos) const;
     void actualitzaMovimentsFitxa(Fitxa& fitxa);
-    void processaMovimentCaptura(Posicio origen, Posicio desti);
+    void processaMovimentCaptura(Fitxa fitxa);
 
 };
 #endif

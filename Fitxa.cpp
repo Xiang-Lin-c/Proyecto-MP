@@ -41,17 +41,23 @@ void Fitxa::setPosicio(Posicio posicio)
 void Fitxa::netejaMovimentsValids() 
 {
     m_numMoviments = 0; 
+	for (int i = 0; i < MAX_MOVIMENTS; i++)
+	{
+		m_movimentsValids[i].netejar(); // Limpia cada movimiento válido
+	}
 }
 
-void Fitxa::afegeixMovimentValid(const Posicio& pos) 
+void Fitxa::afegeixMovimentValid(const Moviment& moviment) 
 {
     if (m_numMoviments < MAX_MOVIMENTS) 
     {
-        m_movimentsValids[m_numMoviments].afegirPosicio(pos);
+        m_movimentsValids[m_numMoviments] = moviment;
         m_numMoviments++;
     }
 }
-
+void Fitxa::ModificaUltimMoviment(const Posicio& posicio) {
+    m_movimentsValids[m_numMoviments].afegirPosicio(posicio);
+}
 int Fitxa::getNumMoviments() const 
 {
     return m_numMoviments;
