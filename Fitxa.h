@@ -42,7 +42,8 @@ public:
     // Métodos para gestionar movimientos válidos
     void generarMovimentsValids(const Tauler& tauler); // Genera movimientos válidos según el tipo de ficha
     void netejaMovimentsValids();                     // Limpia los movimientos válidos
-    void afegeixMovimentValid(const Posicio& pos); // Añade un movimiento válido
+    void afegeixMovimentValid(const Moviment& moviment); // Añade un movimiento válido
+	void ModificaUltimMoviment(const Posicio& posicio); // Modifica el último movimiento válido
     int getNumMoviments() const;                      // Devuelve el número de movimientos válidos
     Moviment getMovimentValid(int index) const;       // Obtiene un movimiento válido por índice
 
