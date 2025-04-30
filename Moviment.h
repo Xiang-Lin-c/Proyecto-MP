@@ -25,11 +25,10 @@ public:
     Moviment(const Posicio& inici, TipusFitxa tipus);
 
     
-    void afegirPosicio(const Posicio& pos);          // Añade una posición al movimiento
-    void eliminarUltimaPosicio();                   // Elimina la última posición del movimiento
-    void netejar();                                 // Limpia el movimiento (reinicia el estado)
-    void afegirFitxaCapturada(const Posicio& pos);  // Añade una ficha capturada al movimiento
-
+    void afegirPosicio(const Posicio& pos); 
+    void eliminarUltimaPosicio();
+    void netejar();        
+    void afegirFitxaCapturada(const Posicio& pos); 
     
     Posicio inici() const;                          // Devuelve la posición inicial del movimiento
     Posicio fi() const;       
@@ -43,11 +42,13 @@ public:
     bool posicioValida(const Posicio& pos, const Tauler& tauler) const; // Comprueba si una posición es válida
 
     
-    Moviment auxMoviment() const;                   // Duplica el movimiento actual
-    
+    bool esValid(const Tauler& tauler) const;
+    bool posicioValida(const Posicio& pos, const Tauler& tauler) const;
 
-   
-    bool operator==(const Moviment& altre) const;   // Compara dos movimientos
+    
+    Moviment auxMoviment() const;
+
+    bool operator==(const Moviment& altre) const;
 };
 
 #endif

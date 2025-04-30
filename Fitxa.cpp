@@ -43,7 +43,7 @@ void Fitxa::netejaMovimentsValids()
     m_numMoviments = 0; 
 	for (int i = 0; i < MAX_MOVIMENTS; i++)
 	{
-		m_movimentsValids[i].netejar(); // Limpia cada movimiento válido
+		m_movimentsValids[i].netejar(); 
 	}
 }
 
@@ -70,7 +70,7 @@ Moviment Fitxa::getMovimentValid(int i) const
     {
         return m_movimentsValids[i];
     }
-    return Moviment(); // Devuelve un movimiento vacío si el índice no es válido
+    return Moviment(); 
 }
 
 
@@ -79,11 +79,11 @@ void Fitxa::convertirDama()
     if (m_tipus == TIPUS_NORMAL) 
     {
         m_tipus = TIPUS_DAMA;
-        netejaMovimentsValids(); // Limpia los movimientos válidos al cambiar el tipo
+        netejaMovimentsValids(); 
     }
 }
 
-// Verifica si la ficha está vacía, por lo tanto se trata de una casilla vacía
+
 bool Fitxa::esBuida() const 
 {
     return m_tipus == TIPUS_EMPTY;
@@ -102,7 +102,7 @@ void Fitxa::afegirCaptura(const Posicio& pos)
 //depenede del tipo de ficha
 void Fitxa::generarMovimentsValids(const Tauler& tauler) 
 {
-    netejaMovimentsValids(); // Limpia los movimientos válidos actuales
+    netejaMovimentsValids(); 
 
     // Crea un movimiento inicial con la posición actual de la ficha
     Moviment movimentActual(m_posicio, m_tipus);
@@ -135,7 +135,6 @@ void Fitxa::generarMovimentsValids(const Tauler& tauler)
             movimentsPendents[nMovimentsPendents++] = movimentPendent;
         }
 
-        // Si el movimiento actual es válido, lo añade a los movimientos válidos
         if (movimentActual.esValid(tauler)) {
             afegeixMovimentValid(movimentActual);
         }
