@@ -1,6 +1,4 @@
 #include "Tauler.h"
-
-
 void Tauler::inicialitza(const string& nomFitxer) {
 	ifstream fitxer(nomFitxer);
 	if (fitxer.is_open()) {
@@ -15,7 +13,7 @@ void Tauler::inicialitza(const string& nomFitxer) {
 				color = COLOR_BLANC; 
 				tipus = TIPUS_NORMAL;
 			}
-			else if (tipusFitxa == 'X'{
+			else if (tipusFitxa == 'X'){
 				color = COLOR_NEGRE;
 				tipus = TIPUS_NORMAL;
 			}
@@ -34,19 +32,32 @@ void Tauler::inicialitza(const string& nomFitxer) {
 	}
 }
 
+void Tauler::actualitzaMovimentsValids() {
+	for (int i = 0; i < N_FILES; i++) {
+		for (int j = 0; j < N_COLUMNES; j++) {
+			if (m_tauler[i][j].getTipus() != TIPUS_EMPTY) {
+				m_tauler[i][j].netejaMovimentsValids();
+				actualitzaMovimentsFitxa(m_tauler[i][j]);
+			}
+		}
+	}
+
+}
+
 bool Tauler::esPosicioValida(const Posicio& pos) const {
 	return pos.getFila() >= 0 && pos.getFila() < N_FILES &&
 		pos.getColumna() >= 0 && pos.getColumna() < N_COLUMNES;
 }
 
-void Tauler::getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]) {
+void Tauler::getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[])const {
 	Fitxa fitxa;
-	int fila, columna;
-	fila = origen.getFila();
-	columna = origen.getColumna();
-	fitxa = m_tauler[fila][columna];
+    int fila, columna;
+    fila = origen.getFila();
+    columna = origen.getColumna();
+    fitxa = m_tauler[fila][columna];
 
 
+    }
 }
 string Tauler::toString() const {
 	ofstream fitxa;
@@ -117,12 +128,52 @@ void Tauler::escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMN
 
 
 void Tauler::inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) {
-	int fila = pos.getFila();
-	int col = pos.getColumna();
+	int fila = posicio.getFila();
+	int col = posicio.getColumna();
 
 	if (fila >= 0 && fila < N_FILES && col >= 0 && col < N_COLUMNES) {
-		tauler[fila][col] = Fitxa(tipus, color, pos);
+		m_tauler[fila][col] = Fitxa(tipus, color, posicio);
 
 	}
 }
 
+void Tauler::actualitzaMovimentsFitxa(Fitxa fitxa) {
+	int fila = fitxa.getPosicio().getFila();
+	int columna = fitxa.getPosicio().getColumna();
+	if (fitxa.getTipus() == TIPUS_NORMAL) {
+		if (fitxa.getColor() == COLOR_BLANC) {
+			if (esPosicioValida(Posicio(fila + 1, columna - 1)) && m_tauler[fila + 1][columna - 1].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila + 1, columna - 1)));
+			}
+			if (esPosicioValida(Posicio(fila + 1, columna + 1)) && m_tauler[fila + 1][columna + 1].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila + 1, columna + 1)));
+			}
+		}
+		else {
+			if (esPosicioValida(Posicio(fila - 1, columna - 1)) && m_tauler[fila - 1][columna - 1].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila - 1, columna - 1)));
+			}
+			if (esPosicioValida(Posicio(fila - 1, columna + 1)) && m_tauler[fila - 1][columna + 1].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila - 1, columna + 1)));
+			}
+		}
+	}
+	else if (fitxa.getTipus() == TIPUS_DAMA) {
+		for (int i = 1; i < N_FILES; i++) {
+			if (esPosicioValida(Posicio(fila + i, columna - i)) && m_tauler[fila + i][columna - i].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila + i, columna - i)));
+			}
+			if (esPosicioValida(Posicio(fila + i, columna + i)) && m_tauler[fila + i][columna + i].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila + i, columna + i)));
+			}
+			if (esPosicioValida(Posicio(fila - i, columna - i)) && m_tauler[fila - i][columna - i].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila - i, columna - i)));
+			}
+			if (esPosicioValida(Posicio(fila - i, columna + i)) && m_tauler[fila - i][columna + i].esbuida()) {
+				fitxa.afegeixMovimentValid(Moviment(fitxa.getPosicio(), Posicio(fila - i, columna + i)));
+			}
+		}
+	}
+
+
+}
