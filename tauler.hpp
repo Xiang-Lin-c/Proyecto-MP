@@ -6,8 +6,7 @@
 #include <fstream>
 
 using namespace std;
-const int N_FILES = 8;
-const int N_COLUMNES = 8;
+
 
 class Tauler {
 
@@ -22,12 +21,12 @@ public:
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
 
 private:
-	Fitxa m_tauler[N_FILES] [N_COLUMNES]; // Matriu de fitxes
+    Fitxa m_tauler[N_FILES][N_COLUMNES];
     void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
     bool esPosicioValida(const Posicio& pos) const;
     void actualitzaMovimentsFitxa(Fitxa& fitxa);
-    void desplazarDama(Fitxa& fitxa, int fila, int columna, int direccion);
-    void processaMovimentCaptura(Fitxa& fitxa, int fila, int columna);
+    void desplazarDama(Fitxa fitxa, int fila, int columna, int direccion);
+    void processaMovimentCaptura(Fitxa fitxa, int fila, int columna);
 
 };
 #endif

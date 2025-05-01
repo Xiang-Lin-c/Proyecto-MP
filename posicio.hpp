@@ -17,7 +17,7 @@ public:
 
     Posicio() : m_fila(0), m_columna(0) {}
     Posicio(const string& pos);
-	Posicio(int fila, int columna) : m_fila(fila), m_columna(columna) {}
+    Posicio(int fila, int columna) : m_fila(fila), m_columna(columna) {}
 
     int getFila() const { return m_fila; }
     int getColumna() const { return m_columna; }
