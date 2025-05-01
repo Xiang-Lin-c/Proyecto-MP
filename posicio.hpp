@@ -1,13 +1,14 @@
-#pragma once
+#ifndef POSICIO_H
+#define POSICIO_H
 #include <string>
 #include <iostream>
 #include <fstream>
-using namespace std;
-#include "Fitxa.h"
-#include "Moviment.h"
-#include "tauler.hpp"
+
+
 const int N_FILES = 8;
 const int N_COLUMNES = 8;
+
+using namespace std;
 
 class Posicio
 {
@@ -34,3 +35,5 @@ private:
 
 
 ostream& operator<<(ostream& out, const Posicio& posicio);
+
+#endif

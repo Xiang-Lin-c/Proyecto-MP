@@ -1,10 +1,7 @@
 #include "Moviment.h"
 
 
-Moviment::Moviment(const Posicio& inici, TipusFitxa tipus) : nPassos(1), nCaptures(0), captura(false), tipusFitxa(tipus) 
-{
-    trajecte[0] = inici; 
-}
+
 
 
 void Moviment::afegirPosicio(const Posicio& pos) 
@@ -34,7 +31,7 @@ void Moviment::netejar()
 }
 
 
-void Moviment::afegirFitxaCapturada(const Posicio& pos) 
+void Moviment::afegirFitxaCapturada(Posicio& pos) 
 {
     if (nCaptures < MAX_CAPTURES) 
     {
@@ -107,28 +104,9 @@ Posicio Moviment::getFitxaCapturada(int index) const
 	return Posicio(); // Devuelve una posición vacía si el índice no es válido
 }
 // Comprueba si el movimiento es válido
-bool Moviment::esValid(const Tauler& tauler) const 
-{
-    // Implementación básica: un movimiento es válido si tiene al menos un paso
-    if (nPassos > 1)
-    {
-        return true;
-    }
-    return false;
-}
 
 
-bool Moviment::posicioValida(const Posicio& pos, const Tauler& tauler) const 
-{
 
-    int fila = pos.getFila();
-    int columna = pos.getColumna();
-	if (fila >= 0 && fila < 8 && columna >= 0 && columna < 8) 
-    {
-		return true;
-	}
-    return false; 
-}
 
 
 Moviment Moviment::auxMoviment() const 
