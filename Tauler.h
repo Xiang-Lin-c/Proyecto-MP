@@ -20,6 +20,7 @@ public:
     string toString() const;
     void llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
+    bool esMovimentValid(const Posicio& origen, const Posicio& desti);
 
 private:
     Fitxa m_tauler[N_FILES][N_COLUMNES];

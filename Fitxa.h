@@ -38,7 +38,7 @@ public:
     void setPosicio(Posicio posicio);
 
     
-    void generarMovimentsValids(const Tauler& tauler);
+    void generarMovimentsValids(Tauler& tauler);
     void netejaMovimentsValids();
     void afegeixMovimentValid(const Moviment& moviment); 
 	void ModificaUltimMoviment(const Posicio& posicio);

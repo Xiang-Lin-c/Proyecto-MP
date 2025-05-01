@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "Moviment.h"
+#include "Fitxa.h"
+
 
 using namespace std;
 
@@ -21,15 +24,14 @@ public:
     void setFila(int fila) { m_fila = fila; }
     void setColumna(int columna) { m_columna = columna; }
     void fromString(const string& pos);
+    string toString() const;
     bool operator==(const Posicio& posicio) const;
     void llegeixFitxa(const string& nomFitxer, char& tipusFitxa, Posicio& posicio);
     void escriuFitxa(const string& nomFitxer, char tipusFitxa, const Posicio& posicio);
-    ifstream& operator>>(ifstream& fitxer, Posicio& posicio);
-    ofstream& operator<<(ofstream& fitxer, const Posicio& posicio);
+   
 private:
     int m_fila;
     int m_columna;
-
-
-
 };
+istream& operator>>(istream& fitxer, Posicio& posicio);
+ostream& operator<<(ostream& fitxer, const Posicio& posicio);

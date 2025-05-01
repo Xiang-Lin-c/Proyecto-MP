@@ -22,19 +22,29 @@ void Posicio::fromString(const string& pos) {
 	m_columna = pos[0] - 'a';
 }
 
-ifstream& Posicio::operator>>(ifstream& fitxer, Posicio& posicio) {
-	string x;
-	fitxer >> x;
-	posicio.fromString(x);
-	return fitxer;
-
+string Posicio::toString() const 
+{
+	char columna = 'a' + m_columna; 
+	char fila = '1' + m_fila;       
+	return string(1, columna) + fila; 
 }
-ofstream& Posicio::operator<<(ofstream& fitxer, const Posicio& posicio) {
+
+
+istream& operator>>(istream& fitxer, Posicio& posicio) 
+{
 	string x;
-	x = posicio.toString();
+	fitxer >> x; 
+	posicio.fromString(x); 
+	return fitxer;
+}
+
+ostream& operator<<(ostream& fitxer, const Posicio& posicio) 
+{
+	string x = posicio.toString();
 	fitxer << x;
 	return fitxer;
 }
+
 
 void Posicio::llegeixFitxa(const string& nomFitxer, char& tipusFitxa, Posicio& posicio) {
 	ifstream fitxer(nomFitxer);
