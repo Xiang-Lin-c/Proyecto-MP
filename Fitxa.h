@@ -3,7 +3,6 @@
 
 #include "posicio.hpp"
 #include "Moviment.h"
-#include "tauler.hpp" 
 #include <iostream>
 #include <string>
 using namespace std;
@@ -38,14 +37,12 @@ public:
     void setPosicio(Posicio posicio);
 
     
-    void generarMovimentsValids(Tauler& tauler);
     void netejaMovimentsValids();
-    void afegeixMovimentValid(const Moviment& moviment); 
-	void ModificaUltimMoviment(const Posicio& posicio);
-	void eliminarFitxaCapturada(const Posicio& pos);
+    void afegeixMovimentValid( Moviment& moviment); 
+	void ModificaUltimMoviment( Posicio& posicio);
     int getNumMoviments() const;
 	int getnumDamesCapturades(int index) const; // Retorna el nombre de dames capturades
-    void afegirCaptura(const Posicio& pos);
+    void afegirCaptura(Posicio& pos);
     void afegirCapturaDama();
     Moviment getMovimentValid(int index) const; 
 

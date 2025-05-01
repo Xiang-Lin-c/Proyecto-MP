@@ -47,7 +47,7 @@ void Fitxa::netejaMovimentsValids()
 	}
 }
 
-void Fitxa::afegeixMovimentValid(const Moviment& moviment) 
+void Fitxa::afegeixMovimentValid(Moviment& moviment) 
 {
     if (m_numMoviments < MAX_MOVIMENTS) 
     {
@@ -55,7 +55,7 @@ void Fitxa::afegeixMovimentValid(const Moviment& moviment)
         m_numMoviments++;
     }
 }
-void Fitxa::ModificaUltimMoviment(const Posicio& posicio) {
+void Fitxa::ModificaUltimMoviment( Posicio& posicio) {
     m_movimentsValids[m_numMoviments].afegirPosicio(posicio);
 }
 int Fitxa::getNumMoviments() const 
@@ -98,7 +98,7 @@ bool Fitxa::esBuida() const
 bool Fitxa::esDama() const {
     return m_tipus == TIPUS_DAMA;
 }
-void Fitxa::afegirCaptura(const Posicio& pos)
+void Fitxa::afegirCaptura(Posicio& pos)
 {
 	if (m_numMoviments < MAX_MOVIMENTS)
 	{
@@ -112,47 +112,5 @@ void Fitxa::afegirCapturaDama() {
     }
 }
 
-//depenede del tipo de ficha
-void Fitxa::generarMovimentsValids(Tauler& tauler) 
-{
-    netejaMovimentsValids(); 
 
-    Moviment movimentActual(m_posicio, m_tipus);
-    Moviment movimentsPendents[MAX_MOVIMENTS];
-    int nMovimentsPendents = 0;
-    movimentsPendents[nMovimentsPendents++] = movimentActual;
 
-    while (nMovimentsPendents > 0) {
-        movimentActual = movimentsPendents[--nMovimentsPendents];
-        Posicio posicioActual = movimentActual.fi();
-
-        
-        Posicio posValides[MAX_PASSOS];
-        int nPosValides = 0;
-        tauler.getPosicionsPossibles(posicioActual, nPosValides, posValides);
-
-      
-        for (int i = 0; i < nPosValides; i++) {
-            Posicio novaPosicio = posValides[i];
-            Moviment movimentPendent = movimentActual.auxMoviment();
-            movimentPendent.afegirPosicio(novaPosicio);
-       
-            if (tauler.esMovimentValid(posicioActual, novaPosicio)) {
-                movimentPendent.afegirFitxaCapturada(novaPosicio);
-            }
-
-            movimentsPendents[nMovimentsPendents++] = movimentPendent;
-        }
-
-        if (movimentActual.esValid(tauler)) {
-            afegeixMovimentValid(movimentActual);
-        }
-    }
-}
-void Fitxa::eliminarFitxaCapturada(const Posicio& pos)
-{
-	for (int i = 0; i < m_numMoviments; i++)
-	{
-		m_movimentsValids[i].eliminarFitxaCapturada(pos);
-	}
-}

@@ -1,10 +1,7 @@
 #include "Moviment.h"
 
 
-Moviment::Moviment(const Posicio& inici, TipusFitxa tipus) : nPassos(1), nCaptures(0), m_captura(false), tipusFitxa(tipus) 
-{
-    trajecte[0] = inici; 
-}
+
 
 
 void Moviment::afegirPosicio(const Posicio& pos) 
@@ -34,7 +31,7 @@ void Moviment::netejar()
 }
 
 
-void Moviment::afegirFitxaCapturada(const Posicio& pos) 
+void Moviment::afegirFitxaCapturada(Posicio& pos) 
 {
     if (nCaptures < MAX_CAPTURES) 
     {
@@ -91,27 +88,18 @@ bool Moviment::esCaptura() const
     return m_captura;
 }
 
-bool Moviment::esValid(const Tauler& tauler) const 
+Posicio Moviment::getFitxaCapturada(int index) const
 {
-    if (nPassos > 1)
-    {
-        return true;
-    }
-    return false;
-}
-
-
-bool Moviment::posicioValida(const Posicio& pos, const Tauler& tauler) const 
-{
-
-    int fila = pos.getFila();
-    int columna = pos.getColumna();
-	if (fila >= 0 && fila < 8 && columna >= 0 && columna < 8) 
-    {
-		return true;
+	if (index >= 0 && index < nCaptures)
+	{
+		return fitxesCapturades[index];
 	}
-    return false; 
+	return Posicio(); // Devuelve una posición vacía si el índice no es válido
 }
+// Comprueba si el movimiento es válido
+
+
+
 
 
 Moviment Moviment::auxMoviment() const 
@@ -131,48 +119,5 @@ Moviment Moviment::auxMoviment() const
     return aux;
 }
 
-bool Moviment::operator==(const Moviment& mov) const 
-{
-   
-    if (tipusFitxa != mov.tipusFitxa)
-    {
-        return false;
-    }
-
-    if (nPassos != mov.nPassos)
-    {
-        return false;
-    }
-
-    for (int i = 0; i < nPassos; i++) 
-    {
-        if ((trajecte[i] == mov.trajecte[i])) 
-        { 
-            return false;
-        }
-    }
-
-    
-    if (nCaptures != mov.nCaptures) 
-    {
-        return false;
-    }
-
-    
-    for (int i = 0; i < nCaptures; i++) 
-    {
-        if (!(fitxesCapturades[i] == mov.fitxesCapturades[i])) 
-        { 
-            return false;
-        }
-    }
-
-    if (m_captura != mov.m_captura) 
-    {
-        return false;
-    }
-
-    return true;
-}
 
 
