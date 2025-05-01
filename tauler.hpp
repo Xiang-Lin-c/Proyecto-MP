@@ -12,6 +12,7 @@ using namespace std;
 class Tauler {
 
 public:
+    Tauler();
     void inicialitza(const string& nomFitxer);
     void actualitzaMovimentsValids();
     void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]);
@@ -27,7 +28,7 @@ private:
     bool esPosicioValida(const Posicio& pos) const;
     void actualitzaMovimentsFitxa(Fitxa& fitxa);
     void desplazarDama(Fitxa fitxa, int fila, int columna, int direccion);
-    void processaMovimentCaptura(Fitxa fitxa, int fila, int columna);
+    void processaMovimentCaptura(const Fitxa& fitxa, int fila, int columna);
 
 };
 #endif
