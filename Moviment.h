@@ -45,7 +45,6 @@ public:
     
     Moviment auxMoviment() const;
 
-    bool operator==(const Moviment& altre) const;
 };
 
 #endif

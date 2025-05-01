@@ -126,49 +126,5 @@ Moviment Moviment::auxMoviment() const
     return aux;
 }
 
-bool Moviment::operator==(const Moviment& mov) const 
-{
-   
-    if (tipusFitxa != mov.tipusFitxa)
-    {
-        return false;
-    }
-
-    if (nPassos != mov.nPassos)
-    {
-        return false;
-    }
-
-    for (int i = 0; i < nPassos; i++) 
-    {
-        if ((trajecte[i] == mov.trajecte[i])) 
-        { 
-            return false;
-        }
-    }
-
-    
-    if (nCaptures != mov.nCaptures) 
-    {
-        return false;
-    }
-
-    
-    for (int i = 0; i < nCaptures; i++) 
-    {
-        if (!(fitxesCapturades[i] == mov.fitxesCapturades[i])) 
-        { 
-            return false;
-        }
-    }
-
-    // Compara si ambos movimientos son de captura
-    if (m_captura != mov.m_captura) 
-    {
-        return false;
-    }
-
-    return true;
-}
 
 
