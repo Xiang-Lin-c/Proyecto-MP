@@ -12,6 +12,7 @@ void Moviment::afegirPosicio(const Posicio& pos)
     if (nPassos < MAX_PASSOS) 
     {
         trajecte[nPassos] = pos;
+        EstatCaptures[nPassos] = nCaptures;
         nPassos++;
     }
 }
@@ -42,7 +43,11 @@ void Moviment::afegirFitxaCapturada(const Posicio& pos)
         m_captura = true; 
     }
 }
+void Moviment::afegirDamaCapturada()
+{
+    nDamaCapturada++;
 
+}
 
 Posicio Moviment::inici() const 
 {
@@ -81,12 +86,10 @@ int Moviment::getNumCaptures() const
     return nCaptures;
 }
 
-
 bool Moviment::esCaptura() const 
 {
     return m_captura;
 }
-
 
 bool Moviment::esValid(const Tauler& tauler) const 
 {
