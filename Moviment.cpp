@@ -12,6 +12,7 @@ void Moviment::afegirPosicio(const Posicio& pos)
     if (nPassos < MAX_PASSOS) 
     {
         trajecte[nPassos] = pos;
+        EstatCaptures[nPassos] = nCaptures;
         nPassos++;
     }
 }
@@ -42,7 +43,11 @@ void Moviment::afegirFitxaCapturada(const Posicio& pos)
         m_captura = true; // Indica que el movimiento implica capturas
     }
 }
+void Moviment::afegirDamaCapturada()
+{
+    nDamaCapturada++;
 
+}
 
 Posicio Moviment::inici() const 
 {
@@ -80,13 +85,27 @@ int Moviment::getNumCaptures() const
 {
     return nCaptures;
 }
-
+int Moviment::getNumDamaCapturada() const
+{
+	return nDamaCapturada;
+}
+int Moviment::getEstatCaptures(int index) const {
+    return EstatCaptures[index];
+}
 // Indica si el movimiento es una captura
 bool Moviment::esCaptura() const 
 {
     return m_captura;
 }
 
+Posicio Moviment::getFitxaCapturada(int index) const
+{
+	if (index >= 0 && index < nCaptures)
+	{
+		return fitxesCapturades[index];
+	}
+	return Posicio(); // Devuelve una posición vacía si el índice no es válido
+}
 // Comprueba si el movimiento es válido
 bool Moviment::esValid(const Tauler& tauler) const 
 {

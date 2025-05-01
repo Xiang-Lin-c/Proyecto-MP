@@ -83,6 +83,12 @@ void Fitxa::convertirDama()
     }
 }
 
+int Fitxa::getnumDamesCapturades(int index) const {
+	if (index >= 0 && index < m_numMoviments) {
+		return m_movimentsValids[index].getNumDamaCapturada();
+	}
+    return 0;
+}
 
 bool Fitxa::esBuida() const 
 {
@@ -99,6 +105,13 @@ void Fitxa::afegirCaptura(const Posicio& pos)
 		m_movimentsValids[m_numMoviments].afegirFitxaCapturada(pos);
 	}
 }
+void Fitxa::afegirCapturaDama() {
+    if (m_numMoviments < MAX_MOVIMENTS)
+    {
+        m_movimentsValids[m_numMoviments].afegirDamaCapturada();
+    }
+}
+
 //depenede del tipo de ficha
 void Fitxa::generarMovimentsValids(const Tauler& tauler) 
 {
@@ -140,4 +153,10 @@ void Fitxa::generarMovimentsValids(const Tauler& tauler)
         }
     }
 }
-
+void Fitxa::eliminarFitxaCapturada(const Posicio& pos)
+{
+	for (int i = 0; i < m_numMoviments; i++)
+	{
+		m_movimentsValids[i].eliminarFitxaCapturada(pos);
+	}
+}
