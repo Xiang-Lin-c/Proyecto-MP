@@ -44,7 +44,7 @@ public:
 	void ModificaUltimMoviment(const Posicio& posicio);
 	void eliminarFitxaCapturada(const Posicio& pos);
     int getNumMoviments() const;
-	int getnumDamesCapturades(int index) const; // Retorna el nombre de dames capturades
+	int getnumDamesCapturades(int index) const; 
     void afegirCaptura(const Posicio& pos);
     void afegirCapturaDama();
     Moviment getMovimentValid(int index) const; 

@@ -83,9 +83,10 @@ void Fitxa::convertirDama()
     }
 }
 
-int Fitxa::getnumDamesCapturades(int index) const {
-	if (index >= 0 && index < m_numMoviments) {
-		return m_movimentsValids[index].getNumDamaCapturada();
+int Fitxa::getnumDamesCapturades(int i) const 
+    {
+	if (i >= 0 && i < m_numMoviments) {
+		return m_movimentsValids[i].getNumDamaCapturada();
 	}
     return 0;
 }
