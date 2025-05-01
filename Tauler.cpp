@@ -523,15 +523,6 @@ void Tauler::escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMN
 }
 
 
-void Tauler::inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) {
-	int fila = posicio.getFila();
-	int col = posicio.getColumna();
-
-	if (fila >= 0 && fila < N_FILES && col >= 0 && col < N_COLUMNES) {
-		m_tauler[fila][col] = Fitxa(tipus, color, posicio);
-
-	}
-}
 
 
 bool Tauler::esMovimentValid(const Posicio& origen, const Posicio& desti) 
