@@ -50,7 +50,7 @@ void Tauler::processaMovimentCaptura(const Fitxa& fitxa, int m_fila, int m_colum
 
 
 	if (fitxa.getTipus() == TIPUS_NORMAL) {
-		if (fitxa.getColor() == COLOR_BLANC) {
+		if (fitxa.getColor() == COLOR_NEGRE) {
 			// Movimiento hacia abajo izquierda
 			if (esPosicioValida(Posicio(fila + 1, columna - 1)) &&
 				m_tauler[fila + 1][columna - 1].getColor() != fitxa.getColor()) {
@@ -143,7 +143,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 	const int columna = fitxa.getPosicio().getColumna();
 	Posicio pos;
 	if (fitxa.getTipus() == TIPUS_NORMAL) {
-		if (fitxa.getColor() == COLOR_BLANC) {
+		if (fitxa.getColor() == COLOR_NEGRE) {
 			if (esPosicioValida(Posicio(fila + 1, columna - 1)) && m_tauler[fila + 1][columna - 1].esBuida()) {
 				pos = Posicio(fila + 1, columna - 1);
 				Moviment mov;
