@@ -1,9 +1,9 @@
 #ifndef FITXA_H
 #define FITXA_H
 
-#include "Posicio.h"
+#include "posicio.hpp"
 #include "Moviment.h"
-#include "Tauler.h" 
+#include "tauler.hpp" 
 #include <iostream>
 #include <string>
 using namespace std;

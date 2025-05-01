@@ -1,4 +1,4 @@
-#include "Tauler.h"
+#include "tauler.hpp"
 void Tauler::inicialitza(const string& nomFitxer) {
 	ifstream fitxer(nomFitxer);
 	if (fitxer.is_open()) {
