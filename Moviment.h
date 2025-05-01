@@ -44,8 +44,7 @@ public:
     bool esCaptura() const;
 	Posicio getPosicio(int index) const;
     
-    bool esValid(const Tauler& tauler) const;
-    bool posicioValida(const Posicio& pos, const Tauler& tauler) const;
+
     int getNumPassos() const;
     int getNumCaptures() const;
 	int getNumDamaCapturada() const; 
