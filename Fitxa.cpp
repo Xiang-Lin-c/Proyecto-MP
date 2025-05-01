@@ -56,7 +56,7 @@ void Fitxa::afegeixMovimentValid(Moviment& moviment)
     }
 }
 void Fitxa::ModificaUltimMoviment(Posicio& posicio) {
-    m_movimentsValids[m_numMoviments].afegirPosicio(posicio);
+    m_movimentsValids[m_numMoviments - 1].afegirPosicio(posicio);
 }
 int Fitxa::getNumMoviments() const
 {
