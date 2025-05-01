@@ -99,39 +99,35 @@ void Fitxa::afegirCaptura(const Posicio& pos)
 		m_movimentsValids[m_numMoviments].afegirFitxaCapturada(pos);
 	}
 }
-//depenede del tipo de ficha
-void Fitxa::generarMovimentsValids(const Tauler& tauler) 
+
+void Fitxa::generarMovimentsValids(Tauler& tauler) 
 {
     netejaMovimentsValids(); 
 
-    // Crea un movimiento inicial con la posición actual de la ficha
     Moviment movimentActual(m_posicio, m_tipus);
     Moviment movimentsPendents[MAX_MOVIMENTS];
     int nMovimentsPendents = 0;
     movimentsPendents[nMovimentsPendents++] = movimentActual;
 
-    // Procesa los movimientos pendientes
     while (nMovimentsPendents > 0) {
         movimentActual = movimentsPendents[--nMovimentsPendents];
         Posicio posicioActual = movimentActual.fi();
 
-        // Obtiene las posiciones válidas desde la posición actual
+        
         Posicio posValides[MAX_PASSOS];
         int nPosValides = 0;
         tauler.getPosicionsPossibles(posicioActual, nPosValides, posValides);
 
-        // Procesa cada posición válida
+      
         for (int i = 0; i < nPosValides; i++) {
             Posicio novaPosicio = posValides[i];
             Moviment movimentPendent = movimentActual.auxMoviment();
             movimentPendent.afegirPosicio(novaPosicio);
-
-            // Si es una captura, añade la ficha capturada
+       
             if (tauler.esMovimentValid(posicioActual, novaPosicio)) {
                 movimentPendent.afegirFitxaCapturada(novaPosicio);
             }
 
-            // Añade el nuevo movimiento pendiente
             movimentsPendents[nMovimentsPendents++] = movimentPendent;
         }
 

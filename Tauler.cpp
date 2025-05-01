@@ -392,3 +392,23 @@ void Tauler::inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posici
 }
 
 
+bool Tauler::esMovimentValid(const Posicio& origen, const Posicio& desti) 
+{
+    if (!esPosicioValida(origen) || !esPosicioValida(desti)) {
+        return false;
+    }
+
+    Posicio posValides[MAX_POSICIONS];
+    int nPosValides = 0;
+    getPosicionsPossibles(origen, nPosValides, posValides);
+
+    
+    for (int i = 0; i < nPosValides; i++) {
+        if (posValides[i] == desti) {
+            return true;
+        }
+    }
+    return false;
+}
+
+

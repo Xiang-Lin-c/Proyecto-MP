@@ -1,7 +1,7 @@
 #include "Moviment.h"
 
 
-Moviment::Moviment(const Posicio& inici, TipusFitxa tipus) : nPassos(1), nCaptures(0), captura(false), tipusFitxa(tipus) 
+Moviment::Moviment(const Posicio& inici, TipusFitxa tipus) : nPassos(1), nCaptures(0), m_captura(false), tipusFitxa(tipus) 
 {
     trajecte[0] = inici; 
 }
@@ -39,7 +39,7 @@ void Moviment::afegirFitxaCapturada(const Posicio& pos)
     {
         fitxesCapturades[nCaptures] = pos;
         nCaptures++;
-        m_captura = true; // Indica que el movimiento implica capturas
+        m_captura = true; 
     }
 }
 
@@ -67,30 +67,29 @@ Posicio Moviment::getPosicio(int index) const
 	{
 		return trajecte[index];
 	}
-	return Posicio(); // Devuelve una posición vacía si el índice no es válido
+	return Posicio();
 }
-// Devuelve el número de pasos en el movimiento
+
 int Moviment::getNumPassos() const 
 {
     return nPassos;
 }
 
-// Devuelve el número de fichas capturadas
+
 int Moviment::getNumCaptures() const 
 {
     return nCaptures;
 }
 
-// Indica si el movimiento es una captura
+
 bool Moviment::esCaptura() const 
 {
     return m_captura;
 }
 
-// Comprueba si el movimiento es válido
+
 bool Moviment::esValid(const Tauler& tauler) const 
 {
-    // Implementación básica: un movimiento es válido si tiene al menos un paso
     if (nPassos > 1)
     {
         return true;
@@ -165,7 +164,6 @@ bool Moviment::operator==(const Moviment& mov) const
         }
     }
 
-    // Compara si ambos movimientos son de captura
     if (m_captura != mov.m_captura) 
     {
         return false;
