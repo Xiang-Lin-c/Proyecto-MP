@@ -83,6 +83,30 @@ int Moviment::getNumCaptures() const
     return nCaptures;
 }
 
+int Moviment::getNumDamaCapturada() const 
+{
+    return nDamaCapturada;
+}
+
+
+int Moviment::getEstatCaptures(int i) const 
+{
+    if (i >= 0 && i < nCaptures) 
+    {
+        return EstatCaptures[i];
+    }
+    return 0; 
+}
+
+Posicio Moviment::getFitxaCapturada(int i) const 
+{
+    if (i >= 0 && i < nCaptures) 
+    {
+        return fitxesCapturades[i];
+    }
+    return Posicio(); 
+}
+
 bool Moviment::esCaptura() const 
 {
     return m_captura;
@@ -99,6 +123,34 @@ Posicio Moviment::getFitxaCapturada(int index) const
 // Comprueba si el movimiento es válido
 
 
+
+
+
+void Moviment::eliminarFitxaCapturada(const Posicio& pos)
+{
+    bool aux = false; 
+
+    for (int i = 0; i < nCaptures; i++)
+    {
+        if (!aux && fitxesCapturades[i] == pos)
+        {
+            for (int j = i; j < nCaptures - 1; j++)
+            {
+                fitxesCapturades[j] = fitxesCapturades[j + 1];
+            }
+            aux = true;
+        }
+
+        if (aux && i < nCaptures - 1)
+        {
+            fitxesCapturades[i] = fitxesCapturades[i + 1];
+        }
+    }
+    if (aux)
+    {
+        nCaptures--;
+    }
+}
 
 
 
