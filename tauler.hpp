@@ -1,3 +1,4 @@
+
 #ifndef TAULER_H
 #define TAULER_H
 #include "Fitxa.h"
@@ -21,7 +22,7 @@ public:
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
 
 private:
-    Fitxa m_tauler[N_FILES][N_COLUMNES];
+    Fitxa m_tauler[N_FILES][N_COLUMNES]; // Matriu de fitxes
     void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
     bool esPosicioValida(const Posicio& pos) const;
     void actualitzaMovimentsFitxa(Fitxa& fitxa);

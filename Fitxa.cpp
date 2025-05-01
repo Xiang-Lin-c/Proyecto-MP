@@ -1,3 +1,4 @@
+
 #include "Fitxa.h"
 
 
@@ -111,6 +112,3 @@ void Fitxa::afegirCapturaDama() {
         m_movimentsValids[m_numMoviments].afegirDamaCapturada();
     }
 }
-
-
-

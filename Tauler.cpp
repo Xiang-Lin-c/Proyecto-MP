@@ -530,9 +530,3 @@ void Tauler::escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMN
 
 }
 
-
-
-
-
-
-

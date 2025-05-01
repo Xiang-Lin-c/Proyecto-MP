@@ -1,3 +1,4 @@
+
 #include "posicio.hpp"
 
 bool Posicio::operator==(const Posicio& posicio) const
