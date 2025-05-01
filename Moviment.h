@@ -1,8 +1,8 @@
 #ifndef MOVIMENT_H
 #define MOVIMENT_H
 
-#include "Posicio.h"
-#include "Tauler.h"
+#include "posicio.hpp"
+#include "tauler.hpp"
 #include <iostream>
 using namespace std;
 
