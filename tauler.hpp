@@ -23,7 +23,7 @@ public:
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
 
 private:
-    Fitxa m_tauler[N_FILES][N_COLUMNES]; // Matriu de fitxes
+    Fitxa m_tauler[N_FILES][N_COLUMNES]; 
     void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
     bool esPosicioValida(const Posicio& pos) const;
     void actualitzaMovimentsFitxa(Fitxa& fitxa);
