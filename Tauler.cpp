@@ -304,6 +304,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 				processaMovimentCaptura(Fitxa(fitxa.getTipus(), fitxa.getColor(), pos), fila, columna);
 			}
 		}
+
 	}
 }
 
@@ -318,32 +319,36 @@ void Tauler::actualitzaMovimentsValids() {
 
 void Tauler::getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]) {
 	actualitzaMovimentsValids();
-	int fila = origen.getFila();
-	int columna = origen.getColumna();
-	Fitxa fitxa = m_tauler[fila][columna];
-	int nMoviments = fitxa.getNumMoviments();
-	int nPassos;
-	Posicio pos;
-	bool trobat = false;
 	nPosicions = 0;
-	for (int i = 0; i < nMoviments; i++) {
-		nPassos = fitxa.getMovimentValid(i).getNumPassos();
-		for (int j = 0; j < nPassos; j++) {
-			trobat = false;
-			pos = fitxa.getMovimentValid(i).getPosicio(j);
-			for (int z = 0; z < nPosicions; z++) {
+
+	if (!esPosicioValida(origen)) return;
+
+	Fitxa fitxa = m_tauler[origen.getFila()][origen.getColumna()];
+	int nMoviments = fitxa.getNumMoviments();
+
+	for (int i = 0; i < nMoviments; ++i) {
+		const Moviment& moviment = fitxa.getMovimentValid(i);
+		int nPassos = moviment.getNumPassos();
+
+		for (int j = 0; j < nPassos; ++j) {
+			Posicio pos = moviment.getPosicio(j);
+			bool trobat = false;
+
+			for (int z = 0; z < nPosicions; ++z) {
 				if (pos == posicionsPossibles[z]) {
 					trobat = true;
-					break;
 				}
 			}
-			if (trobat == false) {
+
+			if (!trobat) {
 				posicionsPossibles[nPosicions] = pos;
-				nPosicions++;
+				++nPosicions;
 			}
 		}
 	}
 }
+
+
 
 
 void Tauler::eliminarFitxa(Posicio pos) {
@@ -365,6 +370,7 @@ void Tauler::inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posici
 
 bool Tauler::mouFitxa(Posicio origen, Posicio desti) {
 	actualitzaMovimentsValids();
+
 	if (!esPosicioValida(origen) || !esPosicioValida(desti) || origen == desti) {
 		return false;
 	}
@@ -374,6 +380,53 @@ bool Tauler::mouFitxa(Posicio origen, Posicio desti) {
 		return false;
 	}
 
+	// Bloque especial para dama: si hay movimiento diagonal directo sin captura
+	if (fitxaOrigen.getTipus() == TIPUS_DAMA) {
+		int filaOrigen = origen.getFila();
+		int colOrigen = origen.getColumna();
+		int filaDesti = desti.getFila();
+		int colDesti = desti.getColumna();
+
+		if ((filaDesti - filaOrigen == colDesti - colOrigen) ||
+			(filaDesti - filaOrigen == colOrigen - colDesti)) {
+
+			int dirFila;
+			if (filaDesti > filaOrigen) {
+				dirFila = 1;
+			}
+			else {
+				dirFila = -1;
+			}
+
+			int dirCol;
+			if (colDesti > colOrigen) {
+				dirCol = 1;
+			}
+			else {
+				dirCol = -1;
+			}
+
+			int f = filaOrigen + dirFila;
+			int c = colOrigen + dirCol;
+			bool diagonalValida = true;
+
+			while (f != filaDesti && c != colDesti) {
+				if (!m_tauler[f][c].esBuida()) {
+					diagonalValida = false;
+				}
+				f += dirFila;
+				c += dirCol;
+			}
+
+			if (diagonalValida) {
+				m_tauler[filaDesti][colDesti] = fitxaOrigen;
+				eliminarFitxa(origen);
+				return true;
+			}
+		}
+	}
+
+	// Si no es un movimiento directo de dama, se busca en los moviments valids
 	int indexMovimentSeleccionat = -1;
 	int indexPassosSeleccionat = -1;
 	int maxCaptures = 0;
@@ -383,15 +436,18 @@ bool Tauler::mouFitxa(Posicio origen, Posicio desti) {
 	for (int i = 0; i < fitxaOrigen.getNumMoviments(); i++) {
 		const Moviment& moviment = fitxaOrigen.getMovimentValid(i);
 
-		maxCaptures = max(maxCaptures, moviment.getNumCaptures());
-		maxDamaCaptures = max(maxDamaCaptures, moviment.getNumDamaCapturada());
+		if (moviment.getNumCaptures() > maxCaptures) {
+			maxCaptures = moviment.getNumCaptures();
+		}
+		if (moviment.getNumDamaCapturada() > maxDamaCaptures) {
+			maxDamaCaptures = moviment.getNumDamaCapturada();
+		}
 
 		for (int j = 0; j < moviment.getNumPassos(); j++) {
 			if (moviment.getPosicio(j) == desti) {
 				indexMovimentSeleccionat = i;
 				indexPassosSeleccionat = j;
 				movimentTrobat = true;
-				break;
 			}
 		}
 	}
@@ -401,29 +457,38 @@ bool Tauler::mouFitxa(Posicio origen, Posicio desti) {
 	}
 
 	Moviment movimentSeleccionat = fitxaOrigen.getMovimentValid(indexMovimentSeleccionat);
-	const int nCaptures = movimentSeleccionat.getEstatCaptures(indexPassosSeleccionat);
+	int nCaptures = movimentSeleccionat.getEstatCaptures(indexPassosSeleccionat);
 
 	if ((maxCaptures > 0 && movimentSeleccionat.getNumCaptures() < maxCaptures) ||
 		(maxDamaCaptures > 0 && movimentSeleccionat.getNumDamaCapturada() < maxDamaCaptures)) {
 		return false;
 	}
+
 	for (int i = 0; i < nCaptures; i++) {
 		eliminarFitxa(movimentSeleccionat.getFitxaCapturada(i));
 	}
 
 	Fitxa& fitxaDesti = m_tauler[desti.getFila()][desti.getColumna()];
 	fitxaDesti = fitxaOrigen;
+	eliminarFitxa(origen);
 
-	const int filaDesti = desti.getFila();
-	if (fitxaDesti.getTipus() == TIPUS_NORMAL &&
-		((filaDesti == N_FILES - 1 && fitxaDesti.getColor() == COLOR_NEGRE) ||
-			(filaDesti == 0 && fitxaDesti.getColor() == COLOR_BLANC))) {
-		fitxaDesti.convertirDama();
+	int filaDesti = desti.getFila();
+	if (fitxaDesti.getTipus() == TIPUS_NORMAL) {
+		if (fitxaDesti.getColor() == COLOR_NEGRE && filaDesti == N_FILES - 1) {
+			fitxaDesti.convertirDama();
+		}
+		else if (fitxaDesti.getColor() == COLOR_BLANC && filaDesti == 0) {
+			fitxaDesti.convertirDama();
+		}
 	}
 
-	eliminarFitxa(origen);
 	return true;
 }
+
+
+
+
+
 
 
 
