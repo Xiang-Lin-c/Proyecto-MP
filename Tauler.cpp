@@ -363,71 +363,59 @@ void Tauler::inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posici
 	m_tauler[fila][columna].netejaMovimentsValids();
 }
 
-bool Tauler::mouFitxa(Posicio origen, Posicio desti) {
-	int fila = origen.getFila();
-	int columna = origen.getColumna();
-	Fitxa fitxa = m_tauler[fila][columna];
-	bool trobat = false;
-	int nPassos;
-	Posicio pos, fitxaCapturada;
-	int indexMoviment, indexPassos;
-	int nMoviments = fitxa.getNumMoviments();
-	if (esPosicioValida(desti) && esPosicioValida(origen)) {
-		for (indexMoviment = 0; indexMoviment < nMoviments; indexMoviment++) {
-			nPassos = fitxa.getMovimentValid(indexMoviment).getNumPassos();
-			for (indexPassos = 0; indexPassos < nPassos; indexPassos++) {
-				trobat = false;
-				pos = fitxa.getMovimentValid(indexMoviment).getPosicio(indexPassos);
-				if (pos == desti) {
-					trobat = true;
-					break;
-				}
+bool Tauler::mouFitxa(Posicio origen, Posicio desti) 
+{
+	
+	if (!esPosicioValida(origen) || !esPosicioValida(desti)) 
+	{
+		return false;
+	}
+
+
+	int filaOrigen = origen.getFila();
+	int columnaOrigen = origen.getColumna();
+	Fitxa fitxa = m_tauler[filaOrigen][columnaOrigen];
+
+	
+	if (fitxa.esBuida()) 
+	{
+		return false;
+	}
+
+	
+	actualitzaMovimentsFitxa(fitxa);
+
+	
+	bool movimentValid = false;
+	for (int i = 0; i < fitxa.getNumMoviments() && !movimentValid; i++) {
+		Moviment moviment = fitxa.getMovimentValid(i);
+		for (int j = 0; j < moviment.getNumPassos() && !movimentValid; j++) {
+			if (moviment.getPosicio(j) == desti) {
+				movimentValid = true;
 			}
 		}
 	}
-	if (trobat == true) {
-		for (int i = 0; i < fitxa.getMovimentValid(indexMoviment).getEstatCaptures(indexPassos); i++) {
-			fitxaCapturada = fitxa.getMovimentValid(indexMoviment).getFitxaCapturada(i);
-			eliminarFitxa(fitxaCapturada);
-		}
 
-		if (indexPassos < nPassos - 1) {
-			eliminarFitxa(desti);
-			eliminarFitxa(origen);
-			return false;
-		}
-		for (int i = 0; i < fitxa.getNumMoviments(); i++) {
-			if (fitxa.getMovimentValid(i).getNumCaptures() > fitxa.getMovimentValid(indexMoviment).getNumCaptures()) {
-				eliminarFitxa(desti);
-				eliminarFitxa(origen);
-				return false;
-			}
-		}
-		for (int i = 0; i < fitxa.getNumMoviments(); i++) {
-			if (fitxa.getMovimentValid(i).getNumDamaCapturada() > fitxa.getMovimentValid(indexMoviment).getNumDamaCapturada()) {
-				eliminarFitxa(desti);
-				eliminarFitxa(origen);
-				return false;
-			}
-		}
-
-		int filaDesti = desti.getFila();
-		int columnaDesti = desti.getColumna();
-		if (filaDesti == N_FILES - 1 && fitxa.getTipus() == TIPUS_NORMAL && fitxa.getColor() == COLOR_BLANC) {
-			fitxa.convertirDama();
-		}
-		else if (filaDesti == 0 && fitxa.getTipus() == TIPUS_NORMAL && fitxa.getColor() == COLOR_NEGRE) {
-			fitxa.convertirDama();
-		}
-		inicialitzaFitxa(fitxa.getTipus(), fitxa.getColor(), desti);
-
-
-
+	if (!movimentValid) {
+		return false;
 	}
 
-	return false;
+	
+	int filaDesti = desti.getFila();
+	int columnaDesti = desti.getColumna();
+	inicialitzaFitxa(fitxa.getTipus(), fitxa.getColor(), desti);
 
+	eliminarFitxa(origen);
+
+	// Verificar si la ficha debe convertirse en dama
+	if ((filaDesti == 0 && fitxa.getColor() == COLOR_NEGRE && fitxa.getTipus() == TIPUS_NORMAL) ||
+		(filaDesti == N_FILES - 1 && fitxa.getColor() == COLOR_BLANC && fitxa.getTipus() == TIPUS_NORMAL)) {
+		m_tauler[filaDesti][columnaDesti].convertirDama();
+	}
+
+	return true;
 }
+
 
 
 
