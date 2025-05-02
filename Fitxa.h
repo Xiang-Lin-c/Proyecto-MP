@@ -21,13 +21,15 @@ enum ColorFitxa
 {
     COLOR_NEGRE,
     COLOR_BLANC,
+    COLOR_BUIT
 };
 
 class Fitxa
 {
 public:
-    Fitxa() : m_tipus(TIPUS_EMPTY) {};
-    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
+    Fitxa() : m_tipus(TIPUS_EMPTY), m_color(COLOR_BUIT) {};
+    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) : m_tipus(tipus), m_color(color), m_posicio(posicio), m_numMoviments(0) {
+    }
 
     TipusFitxa getTipus() const;
     ColorFitxa getColor() const;
@@ -45,6 +47,8 @@ public:
 
     int getnumDamesCapturades(int index) const;
     void afegirCaptura(Posicio pos);
+    void ModificaUltimMovimentCaptura(Posicio posicio);
+    void ModificaUltimMovimentCapturaDama(Posicio posicio);
     void afegirCapturaDama();
     Moviment getMovimentValid(int index) const;
 

@@ -1,12 +1,6 @@
 
 #include "Fitxa.h"
 
-
-
-
-Fitxa::Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) : m_tipus(tipus), m_color(color), m_posicio(posicio), m_numMoviments(0) {}
-
-
 TipusFitxa Fitxa::getTipus() const
 {
     return m_tipus;
@@ -105,6 +99,12 @@ void Fitxa::afegirCaptura(Posicio pos)
     {
         m_movimentsValids[m_numMoviments].afegirFitxaCapturada(pos);
     }
+}
+void Fitxa::ModificaUltimMovimentCaptura(Posicio posicio) {
+    m_movimentsValids[m_numMoviments - 1].afegirFitxaCapturada(posicio);
+}
+void Fitxa::ModificaUltimMovimentCapturaDama(Posicio posicio) {
+    m_movimentsValids[m_numMoviments - 1].afegirDamaCapturada();
 }
 void Fitxa::afegirCapturaDama() {
     if (m_numMoviments < MAX_MOVIMENTS)

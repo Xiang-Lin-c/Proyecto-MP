@@ -24,10 +24,10 @@ public:
 
     Moviment() : nPassos(0), nCaptures(0), m_captura(false), nDamaCapturada(0) {};
 
-    void afegirPosicio(const Posicio& pos);
+    void afegirPosicio(Posicio& pos);
     void eliminarUltimaPosicio();
     void netejar();
-    void afegirFitxaCapturada(Posicio& pos);
+    void afegirFitxaCapturada(Posicio pos);
     void afegirDamaCapturada();
 
     Posicio inici() const;

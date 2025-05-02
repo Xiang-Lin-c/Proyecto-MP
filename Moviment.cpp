@@ -4,7 +4,7 @@
 
 
 
-void Moviment::afegirPosicio(const Posicio& pos)
+void Moviment::afegirPosicio(Posicio& pos)
 {
     if (nPassos < MAX_PASSOS)
     {
@@ -14,6 +14,21 @@ void Moviment::afegirPosicio(const Posicio& pos)
     }
 }
 
+void Moviment::afegirFitxaCapturada(Posicio pos)
+{
+    if (nCaptures < MAX_CAPTURES)
+    {
+        fitxesCapturades[nCaptures] = pos;
+        nCaptures++;
+        EstatCaptures[nPassos - 1] = nCaptures;
+        m_captura = true;
+    }
+}
+void Moviment::afegirDamaCapturada()
+{
+    nDamaCapturada++;
+
+}
 
 void Moviment::eliminarUltimaPosicio()
 {
@@ -30,21 +45,6 @@ void Moviment::netejar()
     m_captura = false;
 }
 
-
-void Moviment::afegirFitxaCapturada(Posicio& pos)
-{
-    if (nCaptures < MAX_CAPTURES)
-    {
-        fitxesCapturades[nCaptures] = pos;
-        nCaptures++;
-        m_captura = true;
-    }
-}
-void Moviment::afegirDamaCapturada()
-{
-    nDamaCapturada++;
-
-}
 
 Posicio Moviment::inici() const
 {
@@ -100,11 +100,9 @@ int Moviment::getEstatCaptures(int i) const
 
 Posicio Moviment::getFitxaCapturada(int i) const
 {
-    if (i >= 0 && i < nCaptures)
-    {
-        return fitxesCapturades[i];
-    }
-    return Posicio();
+
+    return fitxesCapturades[i];
+
 }
 
 bool Moviment::esCaptura() const
