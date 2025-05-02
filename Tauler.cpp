@@ -297,7 +297,7 @@ void Tauler::actualitzaMovimentsFitxa(Fitxa& fitxa) {
 				pos = Posicio(fila - 2, columna + 2);
 				Moviment mov;
 				mov.afegirPosicio(pos);
-				mov.afegirFitxaCapturada(Posicio(fila + 1, columna - 1));
+				mov.afegirFitxaCapturada(Posicio(fila - 1, columna + 1));
 				fitxa.afegeixMovimentValid(mov);
 				if (m_tauler[fila - 1][columna + 1].getTipus() == TIPUS_DAMA) {
 					fitxa.afegirCapturaDama();
