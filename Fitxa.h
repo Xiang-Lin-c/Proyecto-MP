@@ -9,24 +9,26 @@ using namespace std;
 
 const int MAX_MOVIMENTS = 20;
 
-typedef enum TipusFitxa
+enum TipusFitxa
 {
     TIPUS_NORMAL,
     TIPUS_DAMA,
     TIPUS_EMPTY
 };
 
-typedef enum ColorFitxa
+enum ColorFitxa
 {
     COLOR_NEGRE,
     COLOR_BLANC,
+    COLOR_BUIT
 };
 
 class Fitxa
 {
 public:
-    Fitxa() : m_tipus(TIPUS_EMPTY) {};
-    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
+    Fitxa() : m_tipus(TIPUS_EMPTY), m_color(COLOR_BUIT) {};
+    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) : m_tipus(tipus), m_color(color), m_posicio(posicio), m_numMoviments(0) {
+    }
 
     TipusFitxa getTipus() const;
     ColorFitxa getColor() const;
@@ -36,25 +38,27 @@ public:
     void setColor(ColorFitxa color);
     void setPosicio(Posicio posicio);
 
-    
+
     void netejaMovimentsValids();
-    void afegeixMovimentValid( Moviment& moviment); 
-	void ModificaUltimMoviment( Posicio& posicio);
+    void afegeixMovimentValid(Moviment& moviment);
+    void ModificaUltimMoviment(Posicio& posicio);
     int getNumMoviments() const;
 
-	int getnumDamesCapturades(int index) const; 
-    void afegirCaptura(Posicio& pos);
+    int getnumDamesCapturades(int index) const;
+    void afegirCaptura(Posicio pos);
+    void ModificaUltimMovimentCaptura(Posicio posicio);
+    void ModificaUltimMovimentCapturaDama(Posicio posicio);
     void afegirCapturaDama();
-    Moviment getMovimentValid(int index) const; 
+    Moviment getMovimentValid(int index) const;
 
-    void convertirDama();                       
-    bool esBuida() const;                       
-    bool esDama() const;                      
+    void convertirDama();
+    bool esBuida() const;
+    bool esDama() const;
 
 private:
-    TipusFitxa m_tipus;                     
-    ColorFitxa m_color;           
-    Posicio m_posicio;                   
+    TipusFitxa m_tipus;
+    ColorFitxa m_color;
+    Posicio m_posicio;
     Moviment m_movimentsValids[MAX_MOVIMENTS];
     int m_numMoviments;
 };
