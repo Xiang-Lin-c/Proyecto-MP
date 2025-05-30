@@ -24,6 +24,13 @@
     <None Include="..\README.md">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="2. Platforms\0. Windows Desktop\Program\libfreetype-6.dll" />
+    <None Include="2. Platforms\0. Windows Desktop\Program\libpng16.dll" />
+    <None Include="2. Platforms\0. Windows Desktop\Program\MP_Practica.pdb" />
+    <None Include="2. Platforms\0. Windows Desktop\Program\SDL2.dll" />
+    <None Include="2. Platforms\0. Windows Desktop\Program\SDL2_image.dll" />
+    <None Include="2. Platforms\0. Windows Desktop\Program\SDL2_ttf.dll" />
+    <None Include="2. Platforms\0. Windows Desktop\Program\zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="0. C++ Code\Graphic Lib\NFont\NFont.cpp">
@@ -56,6 +63,9 @@
     <ClCompile Include="0. C++ Code\Graphic Lib\video.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="0. C++ Code\Logic Game\Fitxa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="0. C++ Code\Logic Game\GraphicManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,9 +73,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="0. C++ Code\Logic Game\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="0. C++ Code\Logic Game\Fitxa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="0. C++ Code\Logic Game\Moviment.cpp">
@@ -121,15 +128,6 @@
     <ClInclude Include="0. C++ Code\Graphic Lib\video.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="0. C++ Code\Logic Game\GraphicManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="0. C++ Code\Logic Game\info_joc.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="0. C++ Code\Logic Game\joc.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\libpng\png.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -149,6 +147,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\libpng\pngstruct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\SDL_ttf\include\SDL_ttf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\Fitxa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\GraphicManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\info_joc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\joc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\Moviment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\posicio.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\tauler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\SDL\include\begin_code.h">
@@ -394,20 +416,41 @@
     <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\SDL\include\SDL_video.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\SDL_ttf\include\SDL_ttf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="0. C++ Code\Logic Game\Fitxa.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="0. C++ Code\Logic Game\Moviment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="0. C++ Code\Logic Game\posicio.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="0. C++ Code\Logic Game\tauler.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="1. Resources\data\Fitxes\dama_blanca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="1. Resources\data\Fitxes\dama_negra.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="1. Resources\data\Fitxes\fitxa_blanca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="1. Resources\data\Fitxes\fitxa_negra.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="1. Resources\data\GUI\fons.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="1. Resources\data\GUI\posicio_valida.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="1. Resources\data\GUI\tauler.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="1. Resources\data\Fitxes\Fonts\FreeSans.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="1. Resources\data\Games\tauler_inicial.txt" />
+    <Text Include="1. Resources\data\Games\moviments.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="2. Platforms\0. Windows Desktop\extlibs\SDL2.lib" />
+    <Library Include="2. Platforms\0. Windows Desktop\extlibs\SDL2_image.lib" />
+    <Library Include="2. Platforms\0. Windows Desktop\extlibs\SDL2_ttf.lib" />
+    <Library Include="2. Platforms\0. Windows Desktop\extlibs\libpng16.lib" />
   </ItemGroup>
 </Project>
