@@ -1,4 +1,3 @@
-
 #ifndef FITXA_H
 #define FITXA_H
 
@@ -27,7 +26,7 @@ enum ColorFitxa
 class Fitxa
 {
 public:
-    Fitxa() : m_tipus(TIPUS_EMPTY), m_color(COLOR_BUIT) {};
+    Fitxa();
     Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) : m_tipus(tipus), m_color(color), m_posicio(posicio), m_numMoviments(0) {
     }
 
@@ -51,11 +50,11 @@ public:
     void ModificaUltimMovimentCapturaDama(Posicio posicio);
     void afegirCapturaDama();
     Moviment getMovimentValid(int index) const;
-
+    bool esMovimentValid(const Posicio& posicio) const;
     void convertirDama();
     bool esBuida() const;
     bool esDama() const;
-
+    Moviment getMovimentActual() const;
 private:
     TipusFitxa m_tipus;
     ColorFitxa m_color;

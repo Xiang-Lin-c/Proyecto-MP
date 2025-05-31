@@ -23,9 +23,12 @@ public:
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
 
 private:
-    Fitxa m_tauler[N_FILES][N_COLUMNES]; 
+    Fitxa m_tauler[N_FILES][N_COLUMNES];
     void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
     bool esPosicioValida(const Posicio& pos) const;
+    void afegeixMovimentSiValid(Fitxa& fitxa, int filaDest, int colDest, int filaCaptura = -1, int colCaptura = -1);
+    void actualitzaMovimentsDama(Fitxa& fitxa, int fila, int columna);
+
     void actualitzaMovimentsFitxa(Fitxa& fitxa);
     void desplazarDama(Fitxa fitxa, int fila, int columna, int direccion);
     void processaMovimentCaptura(const Fitxa& fitxa, int fila, int columna);

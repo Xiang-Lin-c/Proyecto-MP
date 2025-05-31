@@ -6,7 +6,7 @@
 
 void Moviment::afegirPosicio(Posicio& pos)
 {
-    if (nPassos < MAX_PASSOS)
+    if (nPassos < m_maxPassos)
     {
         trajecte[nPassos] = pos;
         EstatCaptures[nPassos] = nCaptures;
@@ -16,7 +16,7 @@ void Moviment::afegirPosicio(Posicio& pos)
 
 void Moviment::afegirFitxaCapturada(Posicio pos)
 {
-    if (nCaptures < MAX_CAPTURES)
+    if (nCaptures < m_maxCaptures)
     {
         fitxesCapturades[nCaptures] = pos;
         nCaptures++;
@@ -111,6 +111,13 @@ bool Moviment::esCaptura() const
 }
 
 
+bool Moviment::esPosicioVisitada(const Posicio& pos) const {
+    for (int i = 0; i < nPassos; ++i) {
+        if (trajecte[i] == pos)
+            return true;
+    }
+    return false;
+}
 
 
 

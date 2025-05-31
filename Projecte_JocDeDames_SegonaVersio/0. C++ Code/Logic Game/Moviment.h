@@ -17,13 +17,22 @@ private:
     Posicio fitxesCapturades[MAX_CAPTURES];
     int nCaptures;
     int EstatCaptures[MAX_PASSOS];
+    int m_maxCaptures;
+    int m_maxPassos;
     int nDamaCapturada;
     bool m_captura;
 
 public:
 
-    Moviment() : nPassos(0), nCaptures(0), m_captura(false), nDamaCapturada(0) {};
-
+    Moviment() : nPassos(0), nCaptures(0), m_captura(false), nDamaCapturada(0), m_maxCaptures(MAX_CAPTURES), m_maxPassos(MAX_PASSOS)
+    {
+        for (int i = 0; i < m_maxPassos; ++i)
+        {
+            trajecte[i] = Posicio();
+            fitxesCapturades[i] = Posicio();
+            EstatCaptures[i] = -1;
+        }
+    };
     void afegirPosicio(Posicio& pos);
     void eliminarUltimaPosicio();
     void netejar();
@@ -40,7 +49,7 @@ public:
     Posicio getFitxaCapturada(int index) const;
     bool esCaptura() const;
     Posicio getPosicio(int index) const;
-
+    bool esPosicioVisitada(const Posicio& pos) const;
     void eliminarFitxaCapturada(const Posicio& pos);
 
     Moviment auxMoviment() const;

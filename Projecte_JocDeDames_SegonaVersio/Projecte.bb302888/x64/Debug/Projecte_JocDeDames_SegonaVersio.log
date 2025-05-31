@@ -1,0 +1,47 @@
+﻿  debug.cpp
+  image_png.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\image_png.cpp(8,10): error C1083: Cannot open include file: 'png.h': No such file or directory
+  keyboard.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\keyboard.h(4,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Graphic%20Lib/keyboard.cpp')
+  
+  mouse.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\video.h(4,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Graphic%20Lib/mouse.cpp')
+  
+  NFont.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\NFont\NFont.h(37,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Graphic%20Lib/NFont/NFont.cpp')
+  
+  SDL_FontCache.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.h(39,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Graphic%20Lib/NFont/SDL_FontCache.cpp')
+  
+  sound.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\sound.cpp(2,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  sprites.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\video.h(4,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Graphic%20Lib/sprites.cpp')
+  
+  stb_vorbis.cpp
+  video.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\keyboard.h(4,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Graphic%20Lib/video.cpp')
+  
+  Fitxa.cpp
+  GraphicManager.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\keyboard.h(4,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Logic%20Game/GraphicManager.cpp')
+  
+  joc.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\keyboard.h(4,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Logic%20Game/joc.cpp')
+  
+  main.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\Projecte_JocDeDames_SegonaVersio\0. C++ Code\Graphic Lib\keyboard.h(4,10): error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  (compiling source file '0.%20C++%20Code/Logic%20Game/main.cpp')
+  
+  Moviment.cpp
+  Posicio.cpp
+  Tauler.cpp
+  Generating Code...

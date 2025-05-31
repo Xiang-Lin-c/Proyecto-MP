@@ -1,5 +1,14 @@
-
 #include "Fitxa.h"
+
+Fitxa::Fitxa() {
+    m_tipus = TIPUS_EMPTY;
+    m_color = COLOR_BUIT;
+    m_numMoviments = 0;
+    m_posicio = Posicio();
+    for (int i = 0; i < MAX_MOVIMENTS; i++) {
+        m_movimentsValids[i] = Moviment();
+    }
+}
 
 TipusFitxa Fitxa::getTipus() const
 {
@@ -111,4 +120,18 @@ void Fitxa::afegirCapturaDama() {
     {
         m_movimentsValids[m_numMoviments].afegirDamaCapturada();
     }
+}
+bool Fitxa::esMovimentValid(const Posicio& posicio) const {
+    for (int i = 0; i < m_numMoviments; i++) {
+        if (m_movimentsValids[i].esPosicioVisitada(posicio)) {
+            return false;
+        }
+    }
+    return true;
+}
+Moviment Fitxa::getMovimentActual() const {
+    if (m_numMoviments > 0) {
+        return m_movimentsValids[m_numMoviments - 1];
+    }
+    return Moviment();
 }
