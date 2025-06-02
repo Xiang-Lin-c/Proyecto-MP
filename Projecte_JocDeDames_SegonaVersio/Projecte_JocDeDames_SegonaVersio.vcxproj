@@ -149,6 +149,7 @@
     <ClCompile Include="0. C++ Code\Logic Game\Moviment.cpp" />
     <ClCompile Include="0. C++ Code\Logic Game\Posicio.cpp" />
     <ClCompile Include="0. C++ Code\Logic Game\Tauler.cpp" />
+    <ClCompile Include="0. C++ Code\Logic Game\CuaMoviments.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0. C++ Code\Graphic Lib\debug.h" />
@@ -261,6 +262,7 @@
     <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\SDL\include\SDL_version.h" />
     <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\SDL\include\SDL_video.h" />
     <ClInclude Include="2. Platforms\0. Windows Desktop\extlibs\SDL_ttf\include\SDL_ttf.h" />
+    <ClInclude Include="0. C++ Code\Logic Game\CuaMoviments.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

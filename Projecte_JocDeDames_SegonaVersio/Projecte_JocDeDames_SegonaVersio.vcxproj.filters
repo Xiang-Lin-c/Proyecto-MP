@@ -77,6 +77,9 @@
     <ClCompile Include="0. C++ Code\Logic Game\Tauler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="0. C++ Code\Logic Game\CuaMoviments.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0. C++ Code\Graphic Lib\NFont\NFont.h">
@@ -407,6 +410,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="0. C++ Code\Logic Game\tauler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="0. C++ Code\Logic Game\CuaMoviments.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
