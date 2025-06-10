@@ -10,7 +10,30 @@
 #include <fstream>
 #include "GraphicManager.h"
 
+Joc::Joc() : m_tauler(), m_cuaMoviments(), m_mode(MODE_JOC_NONE), m_jugadorTorn(1), m_finalPartida(false), m_guanyador(0), m_fitxaSeleccionada(false), m_posicioSeleccionada(), m_movimentsValids() {}
 
+void Joc::inicialitza(ModeJoc mode, const string& nomFitxerTauler, const string& nomFitxerMoviments)
+{
+    m_mode = mode;
+    m_nomFitxerMoviments = nomFitxerMoviments;
+
+    m_tauler.inicialitza(nomFitxerTauler);
+
+    m_jugadorTorn = 1;
+    m_finalPartida = false;
+    m_guanyador = 0;
+    m_fitxaSeleccionada = false;
+    m_movimentsValids.clear();
+
+    if (mode == MODE_JOC_NORMAL)
+    {
+        m_cuaMoviments.buidaCua();
+    }
+    else if (mode == MODE_JOC_REPLAY)
+    {
+        m_cuaMoviments.carregaDeFitxer(nomFitxerMoviments);
+    }
+}
 
 bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus) 
 {
@@ -60,7 +83,13 @@ bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus)
 
 	return false;
 }
-
+void Joc::finalitza()
+{
+    if (m_mode == MODE_JOC_NORMAL)
+    {
+        m_cuaMoviments.guardaEnFitxer(m_nomFitxerMoviments);
+    }
+}
 
 
 
