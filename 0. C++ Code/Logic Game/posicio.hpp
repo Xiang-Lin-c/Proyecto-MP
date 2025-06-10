@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include <vector>
 
 const int N_FILES = 8;
 const int N_COLUMNES = 8;
@@ -16,9 +16,9 @@ class Posicio
 
 public:
 
-    Posicio() : m_fila(0), m_columna(0) {}
+    Posicio() : m_fila(0), m_columna(0), m_captura(false) {};
     Posicio(const string& pos);
-    Posicio(int fila, int columna) : m_fila(fila), m_columna(columna) {}
+    Posicio(int fila, int columna) : m_fila(fila), m_columna(columna), m_captura(false) {};
 
     int getFila() const { return m_fila; }
     int getColumna() const { return m_columna; }
@@ -27,11 +27,12 @@ public:
     void fromString(const string& pos);
     string toString() const;
     bool operator==(const Posicio& posicio) const;
-
+    void setCaptura() { m_captura = true; }
+    bool getCaptura() const { return m_captura; }
 private:
     int m_fila;
     int m_columna;
-
+    bool m_captura;
 };
 
 

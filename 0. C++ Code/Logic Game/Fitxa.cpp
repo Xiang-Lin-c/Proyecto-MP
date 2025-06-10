@@ -3,11 +3,8 @@
 Fitxa::Fitxa() {
     m_tipus = TIPUS_EMPTY;
     m_color = COLOR_BUIT;
-    m_numMoviments = 0;
     m_posicio = Posicio();
-    for (int i = 0; i < MAX_MOVIMENTS; i++) {
-        m_movimentsValids[i] = Moviment();
-    }
+
 }
 
 TipusFitxa Fitxa::getTipus() const
@@ -43,33 +40,26 @@ void Fitxa::setPosicio(Posicio posicio)
 
 void Fitxa::netejaMovimentsValids()
 {
-    m_numMoviments = 0;
-    for (int i = 0; i < MAX_MOVIMENTS; i++)
-    {
-        m_movimentsValids[i].netejar();
-    }
+    m_movimentsValids.clear();
+    m_possicionsPosibles.clear();
 }
 
 void Fitxa::afegeixMovimentValid(Moviment& moviment)
 {
-    if (m_numMoviments < MAX_MOVIMENTS)
-    {
-        m_movimentsValids[m_numMoviments] = moviment;
-        m_numMoviments++;
-    }
+
+    m_movimentsValids.push_back(moviment);
+
 }
-void Fitxa::ModificaUltimMoviment(Posicio& posicio) {
-    m_movimentsValids[m_numMoviments - 1].afegirPosicio(posicio);
-}
+
 int Fitxa::getNumMoviments() const
 {
-    return m_numMoviments;
+    return m_movimentsValids.size();
 }
 
 
 Moviment Fitxa::getMovimentValid(int i) const
 {
-    if (i >= 0 && i < m_numMoviments)
+    if (i >= 0 && i < m_movimentsValids.size())
     {
         return m_movimentsValids[i];
     }
@@ -88,7 +78,7 @@ void Fitxa::convertirDama()
 
 int Fitxa::getnumDamesCapturades(int i) const
 {
-    if (i >= 0 && i < m_numMoviments) {
+    if (i >= 0 && i < m_movimentsValids.size()) {
         return m_movimentsValids[i].getNumDamaCapturada();
     }
     return 0;
@@ -102,27 +92,15 @@ bool Fitxa::esBuida() const
 bool Fitxa::esDama() const {
     return m_tipus == TIPUS_DAMA;
 }
-void Fitxa::afegirCaptura(Posicio pos)
-{
-    if (m_numMoviments < MAX_MOVIMENTS)
-    {
-        m_movimentsValids[m_numMoviments].afegirFitxaCapturada(pos);
-    }
-}
-void Fitxa::ModificaUltimMovimentCaptura(Posicio posicio) {
-    m_movimentsValids[m_numMoviments - 1].afegirFitxaCapturada(posicio);
-}
-void Fitxa::ModificaUltimMovimentCapturaDama(Posicio posicio) {
-    m_movimentsValids[m_numMoviments - 1].afegirDamaCapturada();
-}
+
 void Fitxa::afegirCapturaDama() {
-    if (m_numMoviments < MAX_MOVIMENTS)
+    if (m_movimentsValids.size() < MAX_MOVIMENTS)
     {
-        m_movimentsValids[m_numMoviments].afegirDamaCapturada();
+        m_movimentsValids[m_movimentsValids.size()].afegirDamaCapturada();
     }
 }
 bool Fitxa::esMovimentValid(const Posicio& posicio) const {
-    for (int i = 0; i < m_numMoviments; i++) {
+    for (int i = 0; i < m_movimentsValids.size(); i++) {
         if (m_movimentsValids[i].esPosicioVisitada(posicio)) {
             return false;
         }
@@ -130,8 +108,21 @@ bool Fitxa::esMovimentValid(const Posicio& posicio) const {
     return true;
 }
 Moviment Fitxa::getMovimentActual() const {
-    if (m_numMoviments > 0) {
-        return m_movimentsValids[m_numMoviments - 1];
-    }
+    if (!m_movimentsValids.empty())
+        return m_movimentsValids.back();
+
     return Moviment();
+}
+
+void Fitxa::afegirPosicionsPossibles(const Posicio& pos) {
+    m_possicionsPosibles.push_back(pos);
+}
+
+bool Fitxa::esPosicioVisitada(const Posicio& pos) const {
+    for (int i = 0; i < m_possicionsPosibles.size(); i++) {
+        if (m_possicionsPosibles[i] == pos) {
+            return true;
+        }
+    }
+    return false;
 }

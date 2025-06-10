@@ -5,6 +5,8 @@
 #include "Moviment.h"
 #include <iostream>
 #include <string>
+#include <vector>
+#include <queue>
 using namespace std;
 
 const int MAX_MOVIMENTS = 20;
@@ -27,7 +29,7 @@ class Fitxa
 {
 public:
     Fitxa();
-    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) : m_tipus(tipus), m_color(color), m_posicio(posicio), m_numMoviments(0) {
+    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio) : m_tipus(tipus), m_color(color), m_posicio(posicio) {
     }
 
     TipusFitxa getTipus() const;
@@ -41,14 +43,13 @@ public:
 
     void netejaMovimentsValids();
     void afegeixMovimentValid(Moviment& moviment);
-    void ModificaUltimMoviment(Posicio& posicio);
     int getNumMoviments() const;
-
+    bool esPosicioVisitada(const Posicio& pos) const;
     int getnumDamesCapturades(int index) const;
     void afegirCaptura(Posicio pos);
-    void ModificaUltimMovimentCaptura(Posicio posicio);
-    void ModificaUltimMovimentCapturaDama(Posicio posicio);
     void afegirCapturaDama();
+    void afegirPosicionsPossibles(const Posicio& pos);
+
     Moviment getMovimentValid(int index) const;
     bool esMovimentValid(const Posicio& posicio) const;
     void convertirDama();
@@ -59,8 +60,8 @@ private:
     TipusFitxa m_tipus;
     ColorFitxa m_color;
     Posicio m_posicio;
-    Moviment m_movimentsValids[MAX_MOVIMENTS];
-    int m_numMoviments;
+    vector <Posicio> m_possicionsPosibles;
+    vector<Moviment> m_movimentsValids;
 };
 
 #endif

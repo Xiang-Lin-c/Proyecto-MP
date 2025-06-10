@@ -5,9 +5,9 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include <vector>
+#include <queue>
 using namespace std;
-
 
 class Tauler {
 
@@ -23,15 +23,20 @@ public:
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
 
 private:
-    Fitxa m_tauler[N_FILES][N_COLUMNES];
+    vector<vector<Fitxa>> m_tauler;
     void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);
+    void CalcularMovimentsValids(Fitxa& fitxa);
+    queue<Posicio> getPosicionsValides(Fitxa& fitxa, Posicio pos);
+    queue<Posicio> getPosicionsValidesCaptura(Fitxa& fitxa, Posicio pos);
+    queue<Posicio> desplazarDama(Fitxa& fitxa, const Posicio& pos, const Posicio& direccio);
     bool esPosicioValida(const Posicio& pos) const;
-    void afegeixMovimentSiValid(Fitxa& fitxa, int filaDest, int colDest, int filaCaptura = -1, int colCaptura = -1);
-    void actualitzaMovimentsDama(Fitxa& fitxa, int fila, int columna);
+    bool esCasellaBuida(const Posicio& pos) const;
+    bool esFichaContraria(const Fitxa& ficha, const Posicio& pos) const;
+    vector<Posicio> getDirecciones(const Fitxa& fitxa) const;
+    Posicio getDireccioDama(const Fitxa, const Posicio& pos) const;
 
-    void actualitzaMovimentsFitxa(Fitxa& fitxa);
-    void desplazarDama(Fitxa fitxa, int fila, int columna, int direccion);
-    void processaMovimentCaptura(const Fitxa& fitxa, int fila, int columna);
+
+
 
 };
 #endif

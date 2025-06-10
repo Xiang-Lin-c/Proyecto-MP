@@ -9,7 +9,7 @@ void Moviment::afegirPosicio(Posicio& pos)
     if (nPassos < m_maxPassos)
     {
         bool trobat = false;
-        for (int i = 0; i < nPassos; i++) {
+        for (int i = 0; i < trajecte.size(); i++) {
             if (trajecte[i] == pos) {
                 trobat = true;
                 break;
@@ -18,32 +18,14 @@ void Moviment::afegirPosicio(Posicio& pos)
         if (trobat)
             return;
 
-        trajecte[nPassos] = pos;
-        EstatCaptures[nPassos] = nCaptures;
+        trajecte.push_back(pos);
+        setnCaptures();
+        EstatCaptures.push_back(nCaptures);
         nPassos++;
     }
 }
 
-void Moviment::afegirFitxaCapturada(Posicio pos)
-{
-    if (nCaptures < m_maxCaptures)
-    {
-        bool trobat = false;
-        for (int i = 0; i < nPassos; i++) {
-            if (fitxesCapturades[i] == pos) {
-                trobat = true;
-                break;
-            }
-        }
-        if (!trobat) {
-            fitxesCapturades[nCaptures] = pos;
-            nCaptures++;
-            EstatCaptures[nPassos - 1] = nCaptures;
-            m_captura = true;
-        }
 
-    }
-}
 void Moviment::afegirDamaCapturada()
 {
     nDamaCapturada++;
@@ -52,15 +34,14 @@ void Moviment::afegirDamaCapturada()
 
 void Moviment::eliminarUltimaPosicio()
 {
-    if (nPassos > 0) {
-        nPassos = nPassos - 1;
-    }
+    trajecte.pop_back();
+    nPassos--;
+
 }
 
 
 void Moviment::netejar()
 {
-    nPassos = 0;
     nCaptures = 0;
     m_captura = false;
 }
@@ -68,9 +49,9 @@ void Moviment::netejar()
 
 Posicio Moviment::inici() const
 {
-    if (nPassos > 0)
+    if (trajecte.size() > 0)
     {
-        return trajecte[0];
+        return trajecte.front();
     }
     return Posicio();
 }
@@ -78,23 +59,32 @@ Posicio Moviment::inici() const
 
 Posicio Moviment::fi() const
 {
-    if (nPassos > 0) {
-        return trajecte[nPassos - 1];
+    if (trajecte.size() > 0) {
+        return trajecte.back();
     }
     return Posicio();
 }
 Posicio Moviment::getPosicio(int index) const
 {
-    if (index >= 0 && index < nPassos)
+    if (index >= 0 && index < trajecte.size())
     {
         return trajecte[index];
     }
     return Posicio();
 }
 
+Posicio Moviment::getUltimaPosicio() const {
+    if (!trajecte.empty()) {
+        return trajecte.back();
+    }
+    else
+        return Posicio();
+}
+
+
 int Moviment::getNumPassos() const
 {
-    return nPassos;
+    return trajecte.size();
 }
 
 
@@ -127,12 +117,13 @@ Posicio Moviment::getFitxaCapturada(int i) const
 
 bool Moviment::esCaptura() const
 {
+
     return m_captura;
 }
 
 
 bool Moviment::esPosicioVisitada(const Posicio& pos) const {
-    for (int i = 0; i < nPassos; ++i) {
+    for (int i = 0; i < trajecte.size(); ++i) {
         if (trajecte[i] == pos)
             return true;
     }
@@ -186,3 +177,18 @@ Moviment Moviment::auxMoviment() const
     return aux;
 }
 
+void Moviment::setnCaptures() {
+    nCaptures = 0;
+
+    for (int i = 0; i < trajecte.size(); i++) {
+        if (trajecte[i].getCaptura())
+        {
+            nCaptures++;
+        }
+
+    }
+    if (nCaptures > 0)
+        m_captura = true;
+    else
+        m_captura = false;
+}

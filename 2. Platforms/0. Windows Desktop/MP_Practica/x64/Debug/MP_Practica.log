@@ -1,27 +1,8 @@
-﻿  debug.cpp
-  image_png.cpp
-  keyboard.cpp
-  mouse.cpp
-  NFont.cpp
-  SDL_FontCache.cpp
-  sound.cpp
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.cpp(138,23): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.cpp(205,25): warning C4309: '=': truncation of constant value
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.cpp(216,25): warning C4309: '=': truncation of constant value
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.cpp(570,17): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.cpp(571,21): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.cpp(607,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Graphic Lib\NFont\SDL_FontCache.cpp(2654,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  sprites.cpp
-  stb_vorbis.cpp
-  video.cpp
+﻿  CuaMoviments.cpp
   Fitxa.cpp
-  GraphicManager.cpp
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\GraphicManager.cpp(29,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\GraphicManager.cpp(29,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  joc.cpp
-  main.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\Fitxa.cpp(56,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Moviment.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\Moviment.cpp(87,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Posicio.cpp
   Tauler.cpp
   Generating Code...

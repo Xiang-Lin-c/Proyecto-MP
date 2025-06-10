@@ -15,6 +15,8 @@ bool Posicio::operator==(const Posicio& posicio) const
 Posicio::Posicio(const string& pos) {
 	m_fila = (N_FILES - 1) - (pos[1] - '1');
 	m_columna = pos[0] - 'a';
+	m_captura = false;
+
 }
 
 

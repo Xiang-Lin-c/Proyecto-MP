@@ -3,6 +3,8 @@
 
 #include "posicio.hpp"
 #include <iostream>
+#include <vector>
+
 using namespace std;
 
 const int MAX_PASSOS = 12;
@@ -12,31 +14,23 @@ class Moviment
 {
 private:
 
-    Posicio trajecte[MAX_PASSOS];
+    vector<Posicio> trajecte;
+    vector<Posicio> fitxesCapturades;
+    vector<int>EstatCaptures;
     int nPassos;
-    Posicio fitxesCapturades[MAX_CAPTURES];
     int nCaptures;
-    int EstatCaptures[MAX_PASSOS];
     int m_maxCaptures;
     int m_maxPassos;
     int nDamaCapturada;
     bool m_captura;
+    Posicio direccio;
 
 public:
 
-    Moviment() : nPassos(0), nCaptures(0), m_captura(false), nDamaCapturada(0), m_maxCaptures(MAX_CAPTURES), m_maxPassos(MAX_PASSOS)
-    {
-        for (int i = 0; i < m_maxPassos; ++i)
-        {
-            trajecte[i] = Posicio();
-            fitxesCapturades[i] = Posicio();
-            EstatCaptures[i] = -1;
-        }
-    };
+    Moviment() : nPassos(0), nCaptures(0), m_captura(false), nDamaCapturada(0), m_maxCaptures(MAX_CAPTURES), m_maxPassos(MAX_PASSOS) { direccio = Posicio(0, 0); }
     void afegirPosicio(Posicio& pos);
     void eliminarUltimaPosicio();
     void netejar();
-    void afegirFitxaCapturada(Posicio pos);
     void afegirDamaCapturada();
 
     Posicio inici() const;
@@ -47,8 +41,10 @@ public:
     int getNumDamaCapturada() const;
     int getEstatCaptures(int index) const;
     Posicio getFitxaCapturada(int index) const;
+    void setnCaptures();
     bool esCaptura() const;
     Posicio getPosicio(int index) const;
+    Posicio getUltimaPosicio() const;
     bool esPosicioVisitada(const Posicio& pos) const;
     void eliminarFitxaCapturada(const Posicio& pos);
 
