@@ -21,7 +21,7 @@ public:
     void eliminarFitxa(Posicio pos);
     void llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
-
+	Fitxa getFitxa(int fila, int columna) const;
 private:
     vector<vector<Fitxa>> m_tauler;
     void inicialitzaFitxa(TipusFitxa tipus, ColorFitxa color, Posicio posicio);

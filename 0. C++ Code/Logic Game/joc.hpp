@@ -31,6 +31,10 @@ private:
     Posicio m_posicioSeleccionada;          // Posición de la ficha seleccionada
     vector<Moviment> m_movimentsValids;     // Movimientos válidos para la ficha seleccionada
     string m_nomFitxerMoviments;       // Nombre del archivo de movimientos
+    void DibuixaFitxa(const Fitxa& fitxa);
+    Posicio getPosicioSeleccionada(int mousePosX, int mousePosY, bool mouseStatus) const;
+
+
 };
 
 #endif

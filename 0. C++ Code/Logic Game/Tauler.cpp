@@ -624,3 +624,6 @@ bool Tauler::mouFitxa(const Posicio& origen, const Posicio& desti) {
 }
 
 
+Fitxa Tauler::getFitxa(int fila, int columna) const {
+	return m_tauler[fila][columna];
+}

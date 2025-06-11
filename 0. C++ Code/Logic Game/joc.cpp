@@ -35,36 +35,67 @@ void Joc::inicialitza(ModeJoc mode, const string& nomFitxerTauler, const string&
     }
 }
 
-bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus) 
-{
-	//TODO 1: Interactuar amb la crida per dibuixar gràfics (sprites).
-	// 	      Dibuixar a pantalla el fons i el gràfic amb el tauler buit.
-	//------------------------------------------------------------------
-    GraphicManager* gManager = GraphicManager::getInstance();
-    gManager->drawSprite(GRAFIC_FONS, 0, 0);
-    gManager->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER);
 
-    int fila = 2;      // Ejemplo: fila 2 (0-7)
-    int columna = 0;   // Ejemplo: columna 3 (0-7)
-
-    // 4. Calcular la posición (x, y) de la ficha en píxeles
-    float posX = POS_X_TAULER + CASELLA_INICIAL_X + columna * AMPLADA_CASELLA;
-    float posY = POS_Y_TAULER + CASELLA_INICIAL_Y + fila * ALCADA_CASELLA;
-
-    int posTextX = POS_X_TAULER;
-    int posTextY = POS_Y_TAULER + (ALCADA_CASELLA * NUM_FILES_TAULER) + 120;
-    std::string msg = "PosX: " + to_string(mousePosX) + ", PosY: " + to_string(mousePosY);
-    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, posTextX, posTextY, 0.8, msg);
-
+Posicio Joc::getPosicioSeleccionada(int mousePosX, int mousePosY, bool mouseStatus) const {
     if ((mouseStatus) && (mousePosX >= (POS_X_TAULER + CASELLA_INICIAL_X)) &&
         (mousePosY >= POS_Y_TAULER + CASELLA_INICIAL_Y) &&
         (mousePosX <= (POS_X_TAULER + CASELLA_INICIAL_X + AMPLADA_CASELLA * NUM_COLS_TAULER)) &&
         (mousePosY <= (POS_Y_TAULER + CASELLA_INICIAL_Y + ALCADA_CASELLA * NUM_FILES_TAULER)))
     {
-        int posX = POS_X_TAULER + CASELLA_INICIAL_X + ((columna) * AMPLADA_CASELLA);
-        int posY = POS_Y_TAULER + CASELLA_INICIAL_Y + ((fila) * ALCADA_CASELLA);
-        GraphicManager::getInstance()->drawSprite(GRAFIC_FITXA_BLANCA, posX, posY);
+		int filaRato = (mousePosY - POS_Y_TAULER - CASELLA_INICIAL_Y) / ALCADA_CASELLA;
+		int columnaRato = (mousePosX - POS_X_TAULER - CASELLA_INICIAL_X) / AMPLADA_CASELLA;
+
+		if (filaRato >= 0 && filaRato < NUM_FILES_TAULER && columnaRato >= 0 && columnaRato < NUM_COLS_TAULER)
+		{
+			return Posicio(filaRato, columnaRato);
+		}
+	}
+	return Posicio(-1, -1); // Retorna una posició invàlida si el ratolí no està sobre el tauler
+}
+
+
+void Joc::DibuixaFitxa(const Fitxa& fitxa) {
+	GraphicManager* gManager = GraphicManager::getInstance();
+	int posX = POS_X_TAULER + CASELLA_INICIAL_X + fitxa.getPosicio().getColumna() * AMPLADA_CASELLA;
+    int posY = POS_Y_TAULER + CASELLA_INICIAL_Y + fitxa.getPosicio().getFila() * ALCADA_CASELLA;
+
+    if (fitxa.getColor() == COLOR_BLANC) {
+        if (fitxa.getTipus() == TIPUS_NORMAL)
+            gManager->drawSprite(GRAFIC_FITXA_BLANCA, posX, posY);
+		else if (fitxa.getTipus() == TIPUS_DAMA) {
+			gManager->drawSprite(GRAFIC_DAMA_BLANCA, posX, posY);
+		}
     }
+    else
+        if (fitxa.getColor() == COLOR_NEGRE) {
+            if (fitxa.getTipus() == TIPUS_NORMAL)
+                gManager->drawSprite(GRAFIC_FITXA_NEGRA, posX, posY);
+            else if (fitxa.getTipus() == TIPUS_DAMA) {
+                gManager->drawSprite(GRAFIC_DAMA_NEGRA, posX, posY);
+            }
+        }
+
+}
+
+bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus) 
+{
+	//TODO 1: Interactuar amb la crida per dibuixar gràfics (sprites).
+	// 	      Dibuixar a pantalla el fons i el gràfic amb el tauler buit.
+	//------------------------------------------------------------------
+    m_tauler.actualitzaMovimentsValids();
+    GraphicManager* gManager = GraphicManager::getInstance();
+    gManager->drawSprite(GRAFIC_FONS, 0, 0);
+    gManager->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER);
+    for (int i = 0; i < N_FILES; i++) {
+        for (int j = 0; j < N_COLUMNES; j++) {
+			DibuixaFitxa(m_tauler.getFitxa(i,j));
+        }
+    }
+    Posicio origen, desti;
+	int filaOrigen, columnaOrigen, filaDesti, columnaDesti;
+
+
+
 
 
 
