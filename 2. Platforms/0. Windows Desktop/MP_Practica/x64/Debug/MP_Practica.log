@@ -1,10 +1,15 @@
 ﻿  CuaMoviments.cpp
   Fitxa.cpp
 C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\Fitxa.cpp(56,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  GraphicManager.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\GraphicManager.cpp(29,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\GraphicManager.cpp(29,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Moviment.cpp
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\Moviment.cpp(87,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Posicio.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\Moviment.cpp(96,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Tauler.cpp
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\Tauler.cpp(529,24): warning C4101: 'esCaptura': unreferenced local variable
+  joc.cpp
+  main.cpp
   Generating Code...
 image_png.obj : error LNK2019: unresolved external symbol png_set_sig_bytes referenced in function "void __cdecl read_png_file(char const *,int *,int *)" (?read_png_file@@YAXPEBDPEAH1@Z)
 image_png.obj : error LNK2019: unresolved external symbol png_sig_cmp referenced in function "void __cdecl read_png_file(char const *,int *,int *)" (?read_png_file@@YAXPEBDPEAH1@Z)
