@@ -16,7 +16,7 @@ public:
     void inicialitza(const string& nomFitxer);
     void actualitzaMovimentsValids();
     void getPosicionsPossibles(Posicio origen, int& nPosicions, Posicio posicionsPossibles[]);
-    bool mouFitxa(Posicio origen, Posicio desti);
+    bool mouFitxa(const Posicio& origen, const Posicio& desti);
     string toString() const;
     void eliminarFitxa(Posicio pos);
     void llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
@@ -29,11 +29,16 @@ private:
     queue<Posicio> getPosicionsValides(Fitxa& fitxa, Posicio pos);
     queue<Posicio> getPosicionsValidesCaptura(Fitxa& fitxa, Posicio pos);
     queue<Posicio> desplazarDama(Fitxa& fitxa, const Posicio& pos, const Posicio& direccio);
+    void CalcularFitxesCapturades(Moviment& MovimentActual, const Fitxa& fitxa);
     bool esPosicioValida(const Posicio& pos) const;
     bool esCasellaBuida(const Posicio& pos) const;
     bool esFichaContraria(const Fitxa& ficha, const Posicio& pos) const;
     vector<Posicio> getDirecciones(const Fitxa& fitxa) const;
     Posicio getDireccioDama(const Fitxa, const Posicio& pos) const;
+    Posicio getDireccioCaptura(const Posicio& Inici, const Posicio& Final);
+    int getIndexMoviment(const Fitxa& fitxa, const Posicio& desti) const;
+    Posicio recercaFitxaAmbCaptura(const Fitxa& fitxa, bool& fitxaCaptura) const;
+    bool recercaMovimentAmbCaptura(const Fitxa& fitxa) const;
 
 
 

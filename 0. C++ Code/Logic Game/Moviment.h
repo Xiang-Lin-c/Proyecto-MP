@@ -39,8 +39,10 @@ public:
     int getNumPassos() const;
     int getNumCaptures() const;
     int getNumDamaCapturada() const;
+    int getIndexPosicio(const Posicio& pos) const;
     int getEstatCaptures(int index) const;
     Posicio getFitxaCapturada(int index) const;
+    void afegirFitxaCapturada(const Posicio& pos);
     void setnCaptures();
     bool esCaptura() const;
     Posicio getPosicio(int index) const;

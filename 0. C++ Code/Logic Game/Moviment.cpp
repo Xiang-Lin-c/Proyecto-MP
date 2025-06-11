@@ -24,6 +24,9 @@ void Moviment::afegirPosicio(Posicio& pos)
         nPassos++;
     }
 }
+void Moviment::afegirFitxaCapturada(const Posicio& pos) {
+    fitxesCapturades.push_back(pos);
+}
 
 
 void Moviment::afegirDamaCapturada()
@@ -44,6 +47,12 @@ void Moviment::netejar()
 {
     nCaptures = 0;
     m_captura = false;
+    trajecte.clear();
+    fitxesCapturades.clear();
+    EstatCaptures.clear();
+    nPassos = 0;
+    nDamaCapturada = 0;
+    direccio = Posicio(0, 0);
 }
 
 
@@ -97,6 +106,15 @@ int Moviment::getNumDamaCapturada() const
 {
     return nDamaCapturada;
 }
+int Moviment::getIndexPosicio(const Posicio& pos) const {
+    for (int i = 0; i < trajecte.size(); i++) {
+        if (trajecte[i] == pos) {
+            return i;
+        }
+    }
+
+    return -1;
+}
 
 
 int Moviment::getEstatCaptures(int i) const
@@ -110,8 +128,11 @@ int Moviment::getEstatCaptures(int i) const
 
 Posicio Moviment::getFitxaCapturada(int i) const
 {
+    if (i < fitxesCapturades.size())
+        return fitxesCapturades[i];
 
-    return fitxesCapturades[i];
+    else
+        return Posicio();
 
 }
 
