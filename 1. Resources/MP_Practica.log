@@ -7,12 +7,8 @@ C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ C
 C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(72,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(74,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(74,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(95,18): warning C4101: 'columnaOrigen': unreferenced local variable
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(95,6): warning C4101: 'filaOrigen': unreferenced local variable
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(95,33): warning C4101: 'filaDesti': unreferenced local variable
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(96,15): warning C4101: 'columna': unreferenced local variable
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(95,44): warning C4101: 'columnaDesti': unreferenced local variable
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(96,9): warning C4101: 'fila': unreferenced local variable
-  main.cpp
-  Generating Code...
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(86,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(86,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(107,33): warning C4101: 'filaDesti': unreferenced local variable
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(107,44): warning C4101: 'columnaDesti': unreferenced local variable
   MP_Practica.vcxproj -> C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\2. Platforms\0. Windows Desktop\Program\MP_Practica.exe

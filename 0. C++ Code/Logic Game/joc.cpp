@@ -77,6 +77,18 @@ void Joc::DibuixaFitxa(const Fitxa& fitxa) {
 
 }
 
+void Joc::MarcarPosicionsPosibles(const Posicio PosicionsPosibles[]) {
+    GraphicManager* gManager = GraphicManager::getInstance();
+    for (int i = 0; i < MAX_MOVIMENTS; i++) {
+        if (PosicionsPosibles[i].getFila() != -1 && PosicionsPosibles[i].getColumna() != -1&& PosicionsPosibles[i].getFila() != 0 && PosicionsPosibles[i].getColumna() != 0) {
+            int posX = POS_X_TAULER + CASELLA_INICIAL_X + PosicionsPosibles[i].getColumna() * AMPLADA_CASELLA;
+            int posY = POS_Y_TAULER + CASELLA_INICIAL_Y + PosicionsPosibles[i].getFila() * ALCADA_CASELLA;
+            gManager->drawSprite(GRAFIC_POSICIO_VALIDA, posX, posY);
+        }
+    }
+}
+
+
 bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus) 
 {
 	//TODO 1: Interactuar amb la crida per dibuixar gràfics (sprites).
@@ -93,8 +105,32 @@ bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus)
     }
     Posicio origen, desti;
 	int filaOrigen, columnaOrigen, filaDesti, columnaDesti;
+	bool origenSeleccionat = false, destiSeleccionat = false;
 
+	origen = getPosicioSeleccionada(mousePosX, mousePosY, mouseStatus);
+    if (origen.getFila() != -1 && origen.getColumna() != -1) {
+        filaOrigen = origen.getFila();
+        columnaOrigen = origen.getColumna();
+        origenSeleccionat = true;
+    }
+    else
+        origenSeleccionat = false;
 
+    if (origenSeleccionat) {
+        Posicio posicionsPosibles[MAX_MOVIMENTS];
+        int numPosicions;
+        m_tauler.getPosicionsPossibles(origen, numPosicions, posicionsPosibles);
+		MarcarPosicionsPosibles(posicionsPosibles);
+		desti = getPosicioSeleccionada(mousePosX, mousePosY, mouseStatus);
+        for (int i = 0; i < numPosicions; i++) {
+            if (desti == posicionsPosibles[i]) {
+				destiSeleccionat = true;
+                break;
+            }
+            else
+				destiSeleccionat = false;
+        }
+    }
 
 
 

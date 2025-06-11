@@ -32,6 +32,7 @@ private:
     vector<Moviment> m_movimentsValids;     // Movimientos válidos para la ficha seleccionada
     string m_nomFitxerMoviments;       // Nombre del archivo de movimientos
     void DibuixaFitxa(const Fitxa& fitxa);
+    void MarcarPosicionsPosibles(const Posicio PosicionsPosibles[]);
     Posicio getPosicioSeleccionada(int mousePosX, int mousePosY, bool mouseStatus) const;
 
 
