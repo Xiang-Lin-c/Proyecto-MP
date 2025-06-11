@@ -57,7 +57,6 @@ int main(int argc, const char* argv[])
 
         // Actualitza la pantalla
         pantalla.update();
-
     } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
     // Sortim del bucle si pressionem ESC
 

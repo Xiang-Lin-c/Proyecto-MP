@@ -16,7 +16,7 @@ class Posicio
 
 public:
 
-    Posicio() : m_fila(0), m_columna(0), m_captura(false) {};
+    Posicio() : m_fila(-1), m_columna(-1), m_captura(false) {};
     Posicio(const string& pos);
     Posicio(int fila, int columna) : m_fila(fila), m_columna(columna), m_captura(false) {};
 

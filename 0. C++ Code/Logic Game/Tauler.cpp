@@ -149,7 +149,8 @@ void Tauler::CalcularMovimentsValids(Fitxa& fitxa) {
 			movimentsPendents.pop();
 			if (movimentActual.getNumPassos() > 0) {
 				posActual = movimentActual.getUltimaPosicio();
-				PosValides = getPosicionsValidesCaptura(fitxa, posActual);
+				if (posActual.getCaptura())
+					PosValides = getPosicionsValidesCaptura(fitxa, posActual);
 			}
 			else {
 				posActual = fitxa.getPosicio();
@@ -169,7 +170,8 @@ void Tauler::CalcularMovimentsValids(Fitxa& fitxa) {
 					movimentsPendents.push(movimentPendent);
 					PosValides.pop();
 				}
-				PosValides = getPosicionsValidesCaptura(fitxa, posActual);
+				if (posActual.getCaptura())
+					PosValides = getPosicionsValidesCaptura(fitxa, posActual);
 
 			}
 			if (movimentActual.getNumPassos() != 0) {
@@ -564,7 +566,13 @@ bool Tauler::mouFitxa(const Posicio& origen, const Posicio& desti) {
 
 			}
 			else {
+				movimentAmbCaptura = recercaMovimentAmbCaptura(fitxa);
+				if (movimentAmbCaptura) {
+					eliminarFitxa(origen);
+					return false;
+				}
 				fitxaBufar = recercaFitxaAmbCaptura(fitxa, fitxaAmbCaptura);
+
 				if (fitxaAmbCaptura)
 					eliminarFitxa(fitxaBufar);
 
