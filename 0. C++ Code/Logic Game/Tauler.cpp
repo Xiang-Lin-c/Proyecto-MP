@@ -623,4 +623,13 @@ bool Tauler::mouFitxa(const Posicio& origen, const Posicio& desti) {
 	return true;
 }
 
+int Tauler::getNumFitxes(ColorFitxa color) const {
+	int count = 0;
+	for (int fila = 0; fila < m_tauler.size(); ++fila)
+		for (int col = 0; col < m_tauler[fila].size(); ++col)
+			if (m_tauler[fila][col].getColor() == color && !m_tauler[fila][col].esBuida())
+				++count;
+	return count;
+}
+
 

@@ -15,8 +15,13 @@ public:
     Joc();
 
     void inicialitza(ModeJoc mode, const string& nomFitxerTauler, const string& nomFitxerMoviments);
-
+    void comprovaFinalPartida();
+    void dibuixaFitxesTauler();
     bool actualitza(int mousePosX, int mousePosY, bool mouseStatus);
+
+    bool actualitzaModeNormal(int mousePosX, int mousePosY, bool mouseStatus);
+
+    bool actualitzaModeReplay(int mousePosX, int mousePosY, bool mouseStatus);
 
     void finalitza();
 
@@ -30,7 +35,8 @@ private:
     bool m_fitxaSeleccionada;                // Indica si hay una ficha seleccionada
     Posicio m_posicioSeleccionada;          // Posición de la ficha seleccionada
     vector<Moviment> m_movimentsValids;     // Movimientos válidos para la ficha seleccionada
-    string m_nomFitxerMoviments;       // Nombre del archivo de movimientos
+    string m_nomFitxerMoviments;            // Nombre del archivo de movimientos
+    bool m_mouseEstatAnterior = false;     // Estado anterior del mouse
 };
 
 #endif

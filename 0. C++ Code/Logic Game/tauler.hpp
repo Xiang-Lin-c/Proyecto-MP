@@ -1,4 +1,3 @@
-
 #ifndef TAULER_H
 #define TAULER_H
 #include "Fitxa.h"
@@ -21,6 +20,8 @@ public:
     void eliminarFitxa(Posicio pos);
     void llegeixTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
     void escriuTauler(const string& nomFitxer, char tauler[N_FILES][N_COLUMNES]);
+    const Fitxa& getFitxa(int fila, int col) const { return m_tauler[fila][col]; }
+    int getNumFitxes(ColorFitxa color) const;
 
 private:
     vector<vector<Fitxa>> m_tauler;
@@ -39,9 +40,6 @@ private:
     int getIndexMoviment(const Fitxa& fitxa, const Posicio& desti) const;
     Posicio recercaFitxaAmbCaptura(const Fitxa& fitxa, bool& fitxaCaptura) const;
     bool recercaMovimentAmbCaptura(const Fitxa& fitxa) const;
-
-
-
 
 };
 #endif

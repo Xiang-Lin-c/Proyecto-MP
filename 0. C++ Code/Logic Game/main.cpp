@@ -43,6 +43,30 @@ int main(int argc, const char* argv[])
 
     Joc joc;
 
+    // --- INICIALITZACIÓ DEL JOC ---
+    ModeJoc mode = MODE_JOC_NORMAL;
+    string fitxerTauler = "taulerinicial.txt";
+    string fitxerMoviments = "moviments.txt";
+
+    // Selecció de mode i fitxers per consola
+    cout << "Selecciona mode (0: NORMAL, 1: REPLAY): ";
+    int opcio;
+    cin >> opcio;
+    if (opcio == 1) mode = MODE_JOC_REPLAY;
+
+    cout << "Nom fitxer tauler (default: taulerinicial.txt): ";
+    string inputTauler;
+    cin >> inputTauler;
+    if (!inputTauler.empty()) fitxerTauler = inputTauler;
+
+    cout << "Nom fitxer moviments (default: moviments.txt): ";
+    string inputMovs;
+    cin >> inputMovs;
+    if (!inputMovs.empty()) fitxerMoviments = inputMovs;
+
+    joc.inicialitza(mode, fitxerTauler, fitxerMoviments);
+
+    bool final = false;
     do
     {
         // Captura tots els events de ratolí i teclat de l'ultim cicle
@@ -51,13 +75,15 @@ int main(int argc, const char* argv[])
         bool mouseStatus = Mouse_getBtnLeft();
         int mousePosX = Mouse_getX();
         int mousePosY = Mouse_getY();
-        bool final = joc.actualitza(mousePosX, mousePosY, mouseStatus);
+        final = joc.actualitza(mousePosX, mousePosY, mouseStatus);
 
         // Actualitza la pantalla
         pantalla.update();
 
-    } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
-    // Sortim del bucle si pressionem ESC
+    } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && !final);
+    // Sortim del bucle si pressionem ESC o acaba la partida
+
+    joc.finalitza();
 
     //Instruccio necesaria per alliberar els recursos de la llibreria 
     SDL_Quit();
