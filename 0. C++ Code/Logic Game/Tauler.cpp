@@ -44,6 +44,17 @@ void Tauler::inicialitza(const string& nomFitxer) {
 	}
 }
 
+int Tauler::getNumFitxes(ColorFitxa color) const  {
+	int count = 0;
+	for (int i = 0; i < N_FILES; i++) {
+		for (int j = 0; j < N_COLUMNES; j++) {
+			if (m_tauler[i][j].getColor() == color && !m_tauler[i][j].esBuida())
+				++count;
+		}
+	}
+
+	return count;
+}
 queue<Posicio> Tauler::getPosicionsValides(Fitxa& fitxa, Posicio pos) {
 	queue<Posicio> posicionsValides;
 	vector<Posicio> direcciones = getDirecciones(fitxa);
@@ -635,3 +646,4 @@ bool Tauler::mouFitxa(const Posicio& origen, const Posicio& desti) {
 Fitxa Tauler::getFitxa(int fila, int columna) const {
 	return m_tauler[fila][columna];
 }
+

@@ -25,6 +25,7 @@ private:
     CuaMoviments m_cuaMoviments;            // Cola de movimientos realizados
     ModeJoc m_mode;                         // Modo de juego (normal o reproducción)
     int m_jugadorTorn;                      // Jugador con el turno actual (1 o 2)
+	string colorJugador;                    // Jugador1(Blanc) o Jugador2(Negre)
     bool m_finalPartida;                    // Indica si la partida ha terminado
     bool m_mouseAnterior;
     int m_guanyador;                        // Jugador ganador (0 si no hay ganador aún)
@@ -42,6 +43,9 @@ private:
     void MarcarPosicionsPosibles(const Posicio PosicionsPosibles[]);
     Posicio getPosicioSeleccionada(int mousePosX, int mousePosY, bool mouseStatus) const;
     void guardarPosicionsPosibles(Posicio posicions[], int numPosicions);
+    bool actualitzaModeNormal(int mousePosX, int mousePosY, bool mouseStatus);
+    void comprovaFinalPartida();
+
 
 
 };

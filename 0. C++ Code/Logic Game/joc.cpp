@@ -100,10 +100,38 @@ void Joc::guardarPosicionsPosibles(Posicio posicions[], int numPosicions) {
 
 bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus)
 {
+    switch (m_mode)
+    {
+    case MODE_JOC_NORMAL:
+        return actualitzaModeNormal(mousePosX, mousePosY, mouseStatus);
+        break;
+    default:
+        return false;
+        break;
+    }
+}
+
+bool Joc::actualitzaModeNormal(int mousePosX, int mousePosY, bool mouseStatus)
+{
     m_tauler.actualitzaMovimentsValids();
     GraphicManager* gManager = GraphicManager::getInstance();
     gManager->drawSprite(GRAFIC_FONS, 0, 0);
     gManager->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER);
+	if (m_jugadorTorn == 1) 
+        colorJugador = "Blanc";
+	else
+        colorJugador = "Negre";
+
+    
+    std::string modeText = "Mode: NORMAL";
+    std::string tornText = "Torn del jugador: " + to_string(m_jugadorTorn) + " (" + colorJugador + ")";
+    int posTextX = POS_X_TAULER;
+    int posTextY = POS_Y_TAULER + (ALCADA_CASELLA * NUM_FILES_TAULER) + 150;
+    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, posTextX, posTextY, 0.8, modeText);
+    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, posTextX, posTextY + 40, 0.8, tornText);
+    std::string msg = "PosX: " + std::to_string(mousePosX) + ", PosY: " + std::to_string(mousePosY);
+    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, posTextX, posTextY + 80, 0.8, msg);
+
 
     for (int i = 0; i < N_FILES; i++) {
         for (int j = 0; j < N_COLUMNES; j++) {
@@ -142,16 +170,47 @@ bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus)
 
     if (origenSeleccionat && destiSeleccionat) {
         m_tauler.mouFitxa(origen, desti);
+        Moviment moviment;
+        moviment.afegirPosicio(origen);
+        moviment.afegirPosicio(desti);
+		m_cuaMoviments.afegeix(moviment);
         origenSeleccionat = false;
         destiSeleccionat = false;
         m_numPosicionsPosibles = 0;
+        if(m_jugadorTorn == 1)
+			m_jugadorTorn = 2;
+		else
+			m_jugadorTorn = 1;
+		comprovaFinalPartida();
+
     }
 
-    return true;
+    if (m_finalPartida)
+    {
+        std::string guanyadorText = "Guanyador: Jugador " + std::to_string(m_guanyador);
+        GraphicManager::getInstance()->drawFont(FONT_GREEN_30, posTextX, posTextY + 120, 0.8, guanyadorText);
+        return true;
+    }
+
+    return false;
 }
 
 
 
+void Joc::comprovaFinalPartida() {
+	Tauler& tauler = m_tauler;
+	int fitxesBlanques = tauler.getNumFitxes(COLOR_BLANC);
+	int fitxesNegres = tauler.getNumFitxes(COLOR_NEGRE);
+
+    if (fitxesBlanques == 0) {
+        m_finalPartida = true;
+        m_guanyador = 2;
+    }
+    else if (fitxesNegres == 0) {
+        m_finalPartida = true;
+        m_guanyador = 1;
+    }
+}
 
 void Joc::finalitza()
 {

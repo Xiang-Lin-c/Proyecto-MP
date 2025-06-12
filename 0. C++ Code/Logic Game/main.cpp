@@ -44,7 +44,9 @@ int main(int argc, const char* argv[])
     Joc joc;
     string nomFitxerTauler = "data/Games/tauler_inicial.txt";
 	string nomFitxerMoviments = "data/Games/moviments.txt";
+    
 	joc.inicialitza(MODE_JOC_NORMAL, nomFitxerTauler, nomFitxerMoviments);
+
     do
     {
         // Captura tots els events de ratolí i teclat de l'ultim cicle
@@ -54,9 +56,13 @@ int main(int argc, const char* argv[])
         int mousePosX = Mouse_getX();
         int mousePosY = Mouse_getY();
         bool final = joc.actualitza(mousePosX, mousePosY, mouseStatus);
-
+ 
         // Actualitza la pantalla
         pantalla.update();
+        if (final) {
+            joc.finalitza();
+            break;
+        }
     } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
     // Sortim del bucle si pressionem ESC
 
