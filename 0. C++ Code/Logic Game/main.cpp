@@ -32,51 +32,53 @@
 
 int main(int argc, const char* argv[])
 {
-    //Instruccions necesaries per poder incloure la llibreria i que trobi el main
     SDL_SetMainReady();
     SDL_Init(SDL_INIT_VIDEO);
 
-    //Inicialitza un objecte de la classe Screen que s'utilitza per gestionar la finestra grafica
     Screen pantalla(TAMANY_PANTALLA_X, TAMANY_PANTALLA_Y);
-    //Mostrem la finestra grafica
     pantalla.show();
 
     Joc joc;
     string nomFitxerTauler = "data/Games/tauler_inicial.txt";
-	string nomFitxerMoviments = "data/Games/moviments.txt";
-    
-	joc.inicialitza(MODE_JOC_NORMAL, nomFitxerTauler, nomFitxerMoviments);
+    string nomFitxerMoviments = "data/Games/moviments.txt";
+
+    int opcio = 0;
+    do {
+        cout << "Tria el mode de joc:" << endl;
+        cout << "1.Mode Normal" << endl;
+        cout << "2.Mode Replay" << endl;
+        cout << "Mode 1 o 2: ";
+        cin >> opcio;
+    } while (opcio != 1 && opcio != 2);
+
+    ModeJoc modeSeleccionat = (opcio == 1) ? MODE_JOC_NORMAL : MODE_JOC_REPLAY;
+    joc.inicialitza(modeSeleccionat, nomFitxerTauler, nomFitxerMoviments);
 
     do
     {
-        // Captura tots els events de ratolí i teclat de l'ultim cicle
         pantalla.processEvents();
 
         bool mouseStatus = Mouse_getBtnLeft();
         int mousePosX = Mouse_getX();
         int mousePosY = Mouse_getY();
         bool final = joc.actualitza(mousePosX, mousePosY, mouseStatus);
- 
-        // Actualitza la pantalla
+
         pantalla.update();
         if (final) {
             joc.finalitza();
             break;
         }
     } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
-    // Sortim del bucle si pressionem ESC
 
     if (joc.getFinalPartida()) {
         do
         {
-            // Captura tots els events de ratolí i teclat de l'ultim cicle
             pantalla.processEvents();
 
             bool mouseStatus = Mouse_getBtnLeft();
             int mousePosX = Mouse_getX();
             int mousePosY = Mouse_getY();
 
-            // Actualitza la pantalla
             joc.MostrarGuanyador(mousePosX, mousePosY, mouseStatus);
 
             pantalla.update();
@@ -84,7 +86,6 @@ int main(int argc, const char* argv[])
         } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
     }
 
-    //Instruccio necesaria per alliberar els recursos de la llibreria 
     SDL_Quit();
     return 0;
 }
