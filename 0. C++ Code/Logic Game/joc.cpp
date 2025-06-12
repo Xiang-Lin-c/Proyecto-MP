@@ -340,6 +340,13 @@ void Joc::MostrarGuanyador(int mousePosX, int mousePosY, bool mouseStatus) {
         }
     }
 
+    string guanyador;
+
+	if (m_guanyador == 1)
+		guanyador = "Blanques";
+	else
+		guanyador = "Negres";
+
     string guanyadorText = "Guanyador: Jugador " + color;
     GraphicManager::getInstance()->drawFont(FONT_GREEN_30, posTextX, posTextY + 120, 0.8, guanyadorText);
     string msgFinal = "Premi ESC per sortir del joc";
