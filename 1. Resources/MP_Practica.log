@@ -18,7 +18,19 @@ C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ C
 C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(133,85): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(133,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(133,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(191,90): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(191,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(191,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(234,80): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(234,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(234,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(235,85): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(235,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(235,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(237,85): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(237,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(237,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(247,86): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(247,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(247,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(249,81): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(249,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\0. C++ Code\Logic Game\joc.cpp(249,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   MP_Practica.vcxproj -> C:\Users\cnlin\Desktop\Uni\Programes\2n Semetre\Proyecto_Juego_de_Damas\2. Platforms\0. Windows Desktop\Program\MP_Practica.exe

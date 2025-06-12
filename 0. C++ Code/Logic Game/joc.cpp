@@ -187,8 +187,6 @@ bool Joc::actualitzaModeNormal(int mousePosX, int mousePosY, bool mouseStatus)
 
     if (m_finalPartida)
     {
-        std::string guanyadorText = "Guanyador: Jugador " + std::to_string(m_guanyador);
-        GraphicManager::getInstance()->drawFont(FONT_GREEN_30, posTextX, posTextY + 120, 0.8, guanyadorText);
         return true;
     }
 
@@ -220,5 +218,37 @@ void Joc::finalitza()
     }
 }
 
+void Joc::MostrarGuanyador(int mousePosX, int mousePosY, bool mouseStatus) {
+
+    m_tauler.actualitzaMovimentsValids();
+    GraphicManager* gManager = GraphicManager::getInstance();
+
+    gManager->drawSprite(GRAFIC_FONS, 0, 0);
+    gManager->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER);
+
+
+    std::string modeText = "Mode: NORMAL";
+    std::string tornText = "Torn del jugador: " + to_string(m_jugadorTorn) + " (" + colorJugador + ")";
+    int posTextX = POS_X_TAULER;
+    int posTextY = POS_Y_TAULER + (ALCADA_CASELLA * NUM_FILES_TAULER) + 150;
+    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, posTextX, posTextY, 0.8, modeText);
+    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, posTextX, posTextY + 40, 0.8, tornText);
+    std::string msg = "PosX: " + std::to_string(mousePosX) + ", PosY: " + std::to_string(mousePosY);
+    GraphicManager::getInstance()->drawFont(FONT_WHITE_30, posTextX, posTextY + 80, 0.8, msg);
+
+
+    for (int i = 0; i < N_FILES; i++) {
+        for (int j = 0; j < N_COLUMNES; j++) {
+            DibuixaFitxa(m_tauler.getFitxa(i, j));
+        }
+    }
+
+    std::string guanyadorText = "Guanyador: Jugador " + std::to_string(m_guanyador);
+    GraphicManager::getInstance()->drawFont(FONT_GREEN_30, posTextX, posTextY + 120, 0.8, guanyadorText);
+	string msgFinal = "Premi ESC per sortir del joc";
+	GraphicManager::getInstance()->drawFont(FONT_RED_30, posTextX, posTextY + 150, 0.8, msgFinal);
+
+
+}
 
 

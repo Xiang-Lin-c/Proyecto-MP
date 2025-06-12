@@ -66,6 +66,24 @@ int main(int argc, const char* argv[])
     } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
     // Sortim del bucle si pressionem ESC
 
+    if (joc.getFinalPartida()) {
+        do
+        {
+            // Captura tots els events de ratolí i teclat de l'ultim cicle
+            pantalla.processEvents();
+
+            bool mouseStatus = Mouse_getBtnLeft();
+            int mousePosX = Mouse_getX();
+            int mousePosY = Mouse_getY();
+
+            // Actualitza la pantalla
+            joc.MostrarGuanyador(mousePosX, mousePosY, mouseStatus);
+
+            pantalla.update();
+
+        } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
+    }
+
     //Instruccio necesaria per alliberar els recursos de la llibreria 
     SDL_Quit();
     return 0;

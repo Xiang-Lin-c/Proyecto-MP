@@ -19,7 +19,8 @@ public:
     bool actualitza(int mousePosX, int mousePosY, bool mouseStatus);
 
     void finalitza();
-
+	bool getFinalPartida() const { return m_finalPartida; }
+    void MostrarGuanyador(int mousePosX, int mousePosY, bool mouseStatus);
 private:
     Tauler m_tauler;                        // Tablero de juego
     CuaMoviments m_cuaMoviments;            // Cola de movimientos realizados
