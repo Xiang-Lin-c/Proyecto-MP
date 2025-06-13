@@ -55,6 +55,8 @@ int Tauler::getNumFitxes(ColorFitxa color) const  {
 
 	return count;
 }
+
+// Retorna les posicions valides per a una fitxa si el moviment actual encara no ha implicat captura
 queue<Posicio> Tauler::getPosicionsValides(Fitxa& fitxa, Posicio pos) {
 	queue<Posicio> posicionsValides;
 	vector<Posicio> direcciones = getDirecciones(fitxa);
@@ -87,6 +89,8 @@ queue<Posicio> Tauler::getPosicionsValides(Fitxa& fitxa, Posicio pos) {
 	return posicionsValides;
 }
 
+// Quan el moviment actual de la fitxa ha implicat una captura, retorna les posicions valides per a una fitxa
+
 queue<Posicio> Tauler::getPosicionsValidesCaptura(Fitxa& fitxa, Posicio pos) {
 	queue<Posicio> posicionsValides;
 	vector<Posicio> direcciones = getDirecciones(fitxa);
@@ -113,7 +117,7 @@ queue<Posicio> Tauler::getPosicionsValidesCaptura(Fitxa& fitxa, Posicio pos) {
 	return posicionsValides;
 }
 
-
+// Si la fitxa es tipus dama i el moviment no ha capturat, continua el moviment simple i retornar la posicio
 queue<Posicio> Tauler::desplazarDama(Fitxa& fitxa, const Posicio& pos, const Posicio& direccio) {
 	queue<Posicio> posicionsValides;
 	int fila = pos.getFila() + direccio.getFila();
@@ -144,6 +148,7 @@ queue<Posicio> Tauler::desplazarDama(Fitxa& fitxa, const Posicio& pos, const Pos
 
 	return posicionsValides;
 }
+
 
 void Tauler::CalcularMovimentsValids(Fitxa& fitxa) {
 	fitxa.netejaMovimentsValids();
@@ -242,6 +247,8 @@ void Tauler::CalcularMovimentsValids(Fitxa& fitxa) {
 		} while (!movimentsPendents.empty());
 	}
 }
+
+//Si la fitxa es mou, s'ha de calcular les posicions de fitxes capturades i guardarles a m_fitxesCapturades;
 void Tauler::CalcularFitxesCapturades(Moviment& MovimentActual, const Fitxa& fitxa) {
 	Posicio pActual = fitxa.getPosicio();
 	Posicio pos;

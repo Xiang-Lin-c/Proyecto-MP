@@ -39,6 +39,7 @@ int main(int argc, const char* argv[])
     pantalla.show();
 
     Joc joc;
+	// Sellecciona el mode de joc i fitxers
     string nomFitxerTauler = "data/Games/tauler_inicial.txt";
     string nomFitxerMoviments = "data/Games/moviments.txt";
 
@@ -64,14 +65,14 @@ int main(int argc, const char* argv[])
         bool final = joc.actualitza(mousePosX, mousePosY, mouseStatus);
 
         pantalla.update();
-        if (final) {
+		if (final) { // Si el joc ha finalitzat, sortim del bucle
             joc.finalitza();
             break;
         }
     } while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE));
-
+    
     if (joc.getFinalPartida()) {
-        do
+		do //si el joc ha finalitzat, mostrem el guanyador
         {
             pantalla.processEvents();
 

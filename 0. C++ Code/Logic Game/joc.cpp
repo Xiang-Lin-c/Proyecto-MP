@@ -39,7 +39,7 @@ void Joc::inicialitza(ModeJoc mode, const string& nomFitxerTauler, const string&
     }
 }
 
-
+//Aquesta funció retorna la posició seleccionada per l'usuari a partir de les coordenades del ratolí.
 Posicio Joc::getPosicioSeleccionada(int mousePosX, int mousePosY, bool mouseStatus) const {
     if ((mouseStatus) && (mousePosX >= (POS_X_TAULER + CASELLA_INICIAL_X)) &&
         (mousePosY >= POS_Y_TAULER + CASELLA_INICIAL_Y) &&
@@ -57,7 +57,9 @@ Posicio Joc::getPosicioSeleccionada(int mousePosX, int mousePosY, bool mouseStat
     return Posicio(-1, -1); 
 }
 
-
+// Aquesta funció dibuixa la fitxa a la posició corresponent al tauler.
+ // Utilitza el GraphicManager per dibuixar les sprites de les fitxes.
+ // La posició de la fitxa es calcula a partir de la seva posició en el tauler.
 void Joc::DibuixaFitxa(const Fitxa& fitxa) {
     GraphicManager* gManager = GraphicManager::getInstance();
     int posX = POS_X_TAULER + CASELLA_INICIAL_X + fitxa.getPosicio().getColumna() * AMPLADA_CASELLA;
@@ -81,6 +83,10 @@ void Joc::DibuixaFitxa(const Fitxa& fitxa) {
 
 }
 
+// Aquesta funció marca les posicions possibles per moure una fitxa.
+ // Utilitza el GraphicManager per dibuixar un sprite que indica que la posició és vàlida.
+ // Les posicions possibles es passen com a paràmetre i es dibuixen al tauler.
+ // Si la posició és vàlida (no és -1, -1), es dibuixa el sprite de posició vàlida.
 void Joc::MarcarPosicionsPosibles(const Posicio PosicionsPosibles[]) {
     GraphicManager* gManager = GraphicManager::getInstance();
     for (int i = 0; i < m_numPosicionsPosibles; i++) {
@@ -91,6 +97,10 @@ void Joc::MarcarPosicionsPosibles(const Posicio PosicionsPosibles[]) {
         }
     }
 }
+
+// Aquesta funció guarda les posicions possibles per moure una fitxa.
+ // Aquesta informació s'utilitza per marcar les posicions vàlides al tauler.
+ // El paràmetre numPosicions indica el nombre de posicions a guardar.
 
 void Joc::guardarPosicionsPosibles(Posicio posicions[], int numPosicions) {
     m_numPosicionsPosibles = numPosicions;
@@ -115,6 +125,10 @@ bool Joc::actualitza(int mousePosX, int mousePosY, bool mouseStatus)
     }
 }
 
+// Aquesta funció actualitza el mode normal del joc.
+ // Dibuixa el tauler, les fitxes i les posicions possibles per moure.
+ // També gestiona la selecció de fitxes i moviments.
+ // Retorna true si la partida ha acabat, false en cas contrari.
 bool Joc::actualitzaModeNormal(int mousePosX, int mousePosY, bool mouseStatus)
 {
     m_tauler.actualitzaMovimentsValids();
@@ -209,6 +223,10 @@ bool Joc::actualitzaModeNormal(int mousePosX, int mousePosY, bool mouseStatus)
     return false;
 }
 
+// Aquesta funció actualitza el mode replay del joc.
+ // Dibuixa el tauler, les fitxes i les posicions possibles per moure.
+ // També gestiona els moviments de les fitxes en mode replay.
+ // Retorna true si la partida ha acabat, false en cas contrari.
 bool Joc::actualitzaModeReplay(int mousePosX, int mousePosY, bool mouseStatus)
 {
     m_tauler.actualitzaMovimentsValids();
@@ -283,6 +301,9 @@ bool Joc::actualitzaModeReplay(int mousePosX, int mousePosY, bool mouseStatus)
     return false;
 }
 
+// Aquesta funció comprova si la partida ha acabat.
+ // Si les fitxes blanques són 0, el guanyador és el jugador 2 (negre).
+ // Si les fitxes negres són 0, el guanyador és el jugador 1 (blanc).
 void Joc::comprovaFinalPartida() {
     Tauler& tauler = m_tauler;
     int fitxesBlanques = tauler.getNumFitxes(COLOR_BLANC);
@@ -306,6 +327,10 @@ void Joc::finalitza()
     }
 }
 
+// Aquesta funció mostra el guanyador de la partida.
+// Dibuixa el tauler, les fitxes i les posicions possibles per moure.
+// També mostra el guanyador i un missatge per sortir del joc.
+// Utilitza el GraphicManager per dibuixar els sprites i textos.
 void Joc::MostrarGuanyador(int mousePosX, int mousePosY, bool mouseStatus) {
 
     m_tauler.actualitzaMovimentsValids();
